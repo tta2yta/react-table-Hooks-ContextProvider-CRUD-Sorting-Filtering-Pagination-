@@ -21,3 +21,22 @@ export const AppContextProvider=(props)=>{
         const handelAge=e=>{
             setAge(e.target.value)
         }
+
+
+
+        return(
+            <AppContext.Provider value={[message, setMessage, fname, setFname, handleFname]}>
+                
+                {props.children}
+                {/* {children} */}
+        
+            </AppContext.Provider>
+        
+        // to pass objects
+        /* <AppContext.Provider value={{ state, incrementAge, decrementAge }}>
+              {children}
+            </AppContext.Provider> */
+        
+        );
+        
+        }
