@@ -15,11 +15,45 @@ export const AppContextProvider=(props)=>{
         const[saveToggle, setSaveToggle]=useState(false)
         const[updItem, setUpdItem]=useState([])
 
+
         const handelLname=e=>{
             setLname(e.target.value)
         }
         const handelAge=e=>{
             setAge(e.target.value)
+        }
+
+        const addNewPerson=(e)=>{
+
+    
+
+            if(saveToggle){
+                // const updItemIndex=person.findIndex(item=> item.id==updItem.id)
+                // person[updItemIndex]={fname, lname, age}
+                // setSaveToggle(false)
+        
+                let tempPerson= person.map(item=>{
+                   return item.id===id ? {...item, fname, lname, age} : item;
+                })
+                setPerson(tempPerson)
+            }
+            else{
+                const newPerson={id:person.length,fname:fname, lname:lname, age}
+                //alert(newPerson)
+                //console.log(newPerson)
+                setPerson(person=> [...person, newPerson])
+                //console.log(person)
+            }
+        }
+
+        const  editPerson =(editItem)=>{
+            setSaveToggle(true)
+            setId(editItem.id)
+            setFname(editItem.fname)
+            setLname(editItem.lname)
+            setAge(editItem.age)
+            setUpdItem(editItem)
+           
         }
 
 
