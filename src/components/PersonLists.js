@@ -32,6 +32,21 @@ export default function PersonLists() {
                    <th colSpan="2"><input type="button" value={saveToggle ? 'Update':'Add person'} onClick={addNewPerson} /></th> 
                     
                 </tr>
+                {person.map((item, key)=>
+            (
+               
+                    <tr key={key}>
+                        <td id="fname">{item.fname}</td>
+                        <td id="lname">{item.lname}</td>
+                        <td id="age">{item.age}</td>
+                        <td><button  onClick={()=>editPerson(item)} >Edit</button></td> 
+                        <td><input type="button" value="Delete" onClick={()=>deletePesron(item)} /></td> 
+                    
+                    </tr>
+
+                )
+                )}
+            </table>
             
         </div>
     )
