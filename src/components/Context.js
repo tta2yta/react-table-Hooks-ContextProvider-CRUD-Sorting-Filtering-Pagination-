@@ -61,6 +61,21 @@ export const AppContextProvider=(props)=>{
             }
 
 
+                    // to do side effect when Dom changes 
+        useEffect(()=>{
+
+            //call it later after performing the DOM updates.
+            //By default, it runs both after the first render and after every update.
+            //Mounting, Rendering or    after render
+            console.log(message)
+            console.log(person)
+
+            // React performs the cleanup when the component unmounts.
+            return()=>{
+
+            }
+        }, [person])
+
 
         return(
             <AppContext.Provider value={[message, setMessage, fname, setFname, handleFname]}>
