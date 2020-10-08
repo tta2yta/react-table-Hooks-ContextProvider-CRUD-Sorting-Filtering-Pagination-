@@ -22,13 +22,7 @@ export const AppContextProvider=(props)=>{
         const[saveToggle, setSaveToggle]=useState(false)
         const[updItem, setUpdItem]=useState([])
 
-
-        const handelLname=e=>{
-            setLname(e.target.value)
-        }
-        const handelAge=e=>{
-            setAge(e.target.value)
-        }
+     
 
         const addNewPerson=(e)=>{
 

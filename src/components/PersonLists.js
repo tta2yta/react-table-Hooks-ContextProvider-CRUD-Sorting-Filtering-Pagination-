@@ -9,8 +9,20 @@ import {AppContext} from './Context'
 
 export default function PersonLists() {
 
-    const [message, setMessage, fname, setFname, handleFname]=useContext(AppContext)
+    const [fname, setFname,lname, setLName,age,setAge,
+        addNewPerson, editPerson, deletePesron]=useContext(AppContext)
 
+
+        const handelFname=e=>{
+            setFname(e.target.value)
+        }
+
+        const handelLname=e=>{
+            setLname(e.target.value)
+        }
+        const handelAge=e=>{
+            setAge(e.target.value)
+        }
 
     return (
         <div>
