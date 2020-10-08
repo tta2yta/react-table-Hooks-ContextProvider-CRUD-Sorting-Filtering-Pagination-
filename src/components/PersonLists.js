@@ -1,6 +1,4 @@
-import React from 'react'
 import React, {useState, useEffect, useContext} from 'react'
-import AddListForm from './AddListForm'
 import { v4 as uuidv4 } from 'uuid';
 import {AppContext} from './Context'
 
@@ -9,11 +7,11 @@ import {AppContext} from './Context'
 
 export default function PersonLists() {
 
-    const [fname, setFname,lname, setLName,age,setAge,
-        addNewPerson, editPerson, deletePesron]=useContext(AppContext)
+    const [person, fname, setFname,lname, setLname,age,setAge,
+        addNewPerson, editPerson, deletePesron, saveToggle]=useContext(AppContext)
 
 
-        const handelFname=e=>{
+        const handleFname=e=>{
             setFname(e.target.value)
         }
 
@@ -23,6 +21,21 @@ export default function PersonLists() {
         const handelAge=e=>{
             setAge(e.target.value)
         }
+
+              // to do side effect when Dom changes 
+              useEffect(()=>{
+
+                //call it later after performing the DOM updates.
+                //By default, it runs both after the first render and after every update.
+                //Mounting, Rendering or    after render
+                console.log(person)
+    
+                // React performs the cleanup when the component unmounts.
+                return()=>{
+    
+                }
+            }, [person])
+
 
     return (
         <div>

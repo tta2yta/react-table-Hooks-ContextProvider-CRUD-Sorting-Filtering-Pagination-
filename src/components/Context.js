@@ -16,7 +16,7 @@ export const AppContextProvider=(props)=>{
     //export const AppContextProvider=({children})=>{
         const[person, setPerson]=useState(initialPerson)
         const[id, setId]=useState(0)
-        //const[fname, setFname]=useState('')
+        const[fname, setFname]=useState('')
         const[lname, setLname]=useState('')
         const[age, setAge]=useState(0)
         const[saveToggle, setSaveToggle]=useState(false)
@@ -62,24 +62,10 @@ export const AppContextProvider=(props)=>{
             }
 
 
-                    // to do side effect when Dom changes 
-        useEffect(()=>{
-
-            //call it later after performing the DOM updates.
-            //By default, it runs both after the first render and after every update.
-            //Mounting, Rendering or    after render
-            console.log(message)
-            console.log(person)
-
-            // React performs the cleanup when the component unmounts.
-            return()=>{
-
-            }
-        }, [person])
-
 
         return(
-            <AppContext.Provider value={[message, setMessage, fname, setFname, handleFname]}>
+            <AppContext.Provider value={[person, fname, setFname,lname, setLname,age,setAge,
+                addNewPerson, editPerson, deletePesron, saveToggle]}>
                 
                 {props.children}
                 {/* {children} */}
