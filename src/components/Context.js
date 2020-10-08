@@ -56,6 +56,10 @@ export const AppContextProvider=(props)=>{
            
         }
 
+        const deletePesron=(delItem)=>{
+            setPerson(person.filter(item=> item!==delItem))
+            }
+
 
 
         return(
