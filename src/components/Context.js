@@ -22,6 +22,10 @@ export const AppContextProvider=(props)=>{
         const[saveToggle, setSaveToggle]=useState(false)
         const[updItem, setUpdItem]=useState([])
 
+        const[searchByFName, setSearchByFName]=useState('')
+        const[searchByName, setSearchByLName]=useState('')
+        const[searchByAge, setSearchByAge]=useState('')
+
      
 
         const addNewPerson=(e)=>{
@@ -62,7 +66,7 @@ export const AppContextProvider=(props)=>{
             }
 
             const searhPersons=()=>{
-                
+
             }
 
 

@@ -70,6 +70,15 @@ export default function PersonLists() {
 
                 )
                 )}
+
+<tr>
+                    
+                    <th>  <input type="text" name="fname" value={fname} onChange={handleFname} /></th>
+                    <th><input type="text" name="lname" value={lname} onChange={handelLname} /></th>
+                    <th><input type="text" name="age" value={age} onChange={handelAge} /></th>
+                   <th colSpan="2"><input type="button" value={saveToggle ? 'Update':'Add person'} onClick={addNewPerson} /></th> 
+                    
+                </tr>
             </table>
             
         </div>
