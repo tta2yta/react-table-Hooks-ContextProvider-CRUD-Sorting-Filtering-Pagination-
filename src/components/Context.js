@@ -61,6 +61,10 @@ export const AppContextProvider=(props)=>{
             setPerson(person.filter(item=> item!==delItem))
             }
 
+            const searhPersons=()=>{
+                
+            }
+
 
 
         return(
