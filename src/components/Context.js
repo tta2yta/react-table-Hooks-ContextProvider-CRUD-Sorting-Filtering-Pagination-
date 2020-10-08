@@ -7,5 +7,10 @@ const {Provider} = AppContext
 
 export const AppContextProvider=(props)=>{
     //export const AppContextProvider=({children})=>{
-    const [message, setMessage]=useState('cunslumed value')
-    const[fname, setFname]=useState('')
+        const[person, setPerson]=useState(initialPerson)
+        const[id, setId]=useState(0)
+        //const[fname, setFname]=useState('')
+        const[lname, setLname]=useState('')
+        const[age, setAge]=useState(0)
+        const[saveToggle, setSaveToggle]=useState(false)
+        const[updItem, setUpdItem]=useState([])
