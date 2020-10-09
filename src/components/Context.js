@@ -7,7 +7,7 @@ const {Provider} = AppContext
 
 const initialPerson=[
     {id:0, fname:'Tedros', lname:'Tesfay', age:30},
-    {id:1, fname:'AAA', lname:'BBB', age:30},
+    {id:1, fname:'aaa', lname:'BBB', age:30},
     {id:2, fname:'CCC', lname:'DDD', age:30},
     {id:3, fname:'EEE', lname:'Tesfay', age:30},                  
 ]
@@ -21,12 +21,7 @@ export const AppContextProvider=(props)=>{
         const[age, setAge]=useState(0)
         const[saveToggle, setSaveToggle]=useState(false)
         const[updItem, setUpdItem]=useState([])
-
-        const[searchByFName, setSearchByFName]=useState('')
-        const[searchByName, setSearchByLName]=useState('')
-        const[searchByAge, setSearchByAge]=useState('')
-
-     
+        const [personFinal, setPersonFinal]=useState(initialPerson)
 
         const addNewPerson=(e)=>{
 
@@ -41,13 +36,16 @@ export const AppContextProvider=(props)=>{
                    return item.id===id ? {...item, fname, lname, age} : item;
                 })
                 setPerson(tempPerson)
+                setPersonFinal(tempPerson)
             }
             else{
                 const newPerson={id:person.length,fname:fname, lname:lname, age}
                 //alert(newPerson)
                 //console.log(newPerson)
                 setPerson(person=> [...person, newPerson])
+                setPersonFinal(person=> [...person, newPerson])
                 //console.log(person)
+                
             }
         }
 
@@ -63,6 +61,7 @@ export const AppContextProvider=(props)=>{
 
         const deletePesron=(delItem)=>{
             setPerson(person.filter(item=> item!==delItem))
+            setPersonFinal(person)
             }
 
             const searhPersons=()=>{
@@ -72,7 +71,7 @@ export const AppContextProvider=(props)=>{
 
 
         return(
-            <AppContext.Provider value={[person, fname, setFname,lname, setLname,age,setAge,
+            <AppContext.Provider value={[person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
                 addNewPerson, editPerson, deletePesron, saveToggle]}>
                 
                 {props.children}
