@@ -86,8 +86,8 @@ export default function PersonLists() {
                 <tr>
                     
                     <th>  <input type="text" id="searchfname" name="searchfname" value={searchByFName} onChange={handleSearchByName} /></th>
-                    <th><input type="text" name="searchlname" value={searchByLName} onChange="" /></th>
-                    <th><input type="text" name="searchage" value={searchByAge} onChange="" /></th>
+                    <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange="" onChange={handleSearchByName} /></th>
+                    <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange="" onChange={handleSearchByName} /></th>
                    
                     
                 </tr>
