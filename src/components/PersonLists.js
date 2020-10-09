@@ -27,7 +27,14 @@ export default function PersonLists() {
     }
 
     const  handleSearchByName=(e)=>{
+        if(e.target.id=="searchfname")
         setSearchByFName(e.target.value)
+
+        if(e.target.id=="searchlname")
+        setSearchByLName(e.target.value)
+
+        if(e.target.id=="searchage")
+        setSearchByAge(e.target.value)
     }
 
     const  handlechange=()=>{
