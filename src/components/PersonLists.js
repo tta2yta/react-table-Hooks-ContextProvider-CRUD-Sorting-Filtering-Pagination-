@@ -40,7 +40,7 @@ export default function PersonLists() {
     }
 
     const  handlechange=(e)=>{
-
+            //alert(e.target.id)
             console.log(personFinal)
             if(e.target.value==""){
                 setPerson(personFinal)
@@ -49,20 +49,16 @@ export default function PersonLists() {
             let filteredPersons;
             switch(e.target.id){
                 case "searchfname":
-                     filteredPersons= personFinal.filter(item=>item.fname.includes(e.target.value))
-                     console.log(filteredPersons)
-                     setPerson(filteredPersons)
-                     console.log(filteredPersons)
+                    filteredPersons= personFinal.filter(item=>item.fname.includes(e.target.value))
+                    break; 
                 case "searchlname":
-                     filteredPersons= personFinal.filter(item=>item.lname.includes(e.target.value))
+                    filteredPersons= personFinal.filter(item=>item.lname.includes(e.target.value))
+                    break;               
                 case "searchage":
-                     filteredPersons= personFinal.filter(item=>item.age==e.target.value)
-                default:
-                    setPerson(person)
+                    filteredPersons= personFinal.filter(item=>item.age==e.target.value)
+                    break;
             }
-                console.log(filteredPersons)
-            
-
+            setPerson(filteredPersons) 
     }
 
     
