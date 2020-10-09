@@ -9,7 +9,7 @@ export default function PersonLists() {
 
     const [searchByFName, setSearchByFName]=useState('')
     const [searchByLName, setSearchByLName]=useState('')
-    const [searchByAge, setSearchByAge]=useState('')
+    const [searchByAge, setSearchByAge]=useState(0)
 
     const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
     addNewPerson, editPerson, deletePesron, saveToggle]=useContext(AppContext)
@@ -27,28 +27,41 @@ export default function PersonLists() {
     }
 
     const  handleSearchByName=(e)=>{
+       // alert(e.target.id)
         if(e.target.id=="searchfname")
         setSearchByFName(e.target.value)
-
+        
         if(e.target.id=="searchlname")
         setSearchByLName(e.target.value)
 
         if(e.target.id=="searchage")
         setSearchByAge(e.target.value)
+        
     }
 
-    const  handlechange=()=>{
-        //alert(searchByFName)
-        console.log(personFinal)
-        if(searchByFName!=""){
-          
-            const filteredPersons= personFinal.filter(item=>item.fname.includes(searchByFName))
-        
-            setPerson(filteredPersons)
-        }
-        else
-        setPerson(personFinal)
-       
+    const  handlechange=(e)=>{
+
+            console.log(personFinal)
+            if(e.target.value==""){
+                setPerson(personFinal)
+                return;
+            }
+            let filteredPersons;
+            switch(e.target.id){
+                case "searchfname":
+                     filteredPersons= personFinal.filter(item=>item.fname.includes(e.target.value))
+                     console.log(filteredPersons)
+                     setPerson(filteredPersons)
+                     console.log(filteredPersons)
+                case "searchlname":
+                     filteredPersons= personFinal.filter(item=>item.lname.includes(e.target.value))
+                case "searchage":
+                     filteredPersons= personFinal.filter(item=>item.age==e.target.value)
+                default:
+                    setPerson(person)
+            }
+                console.log(filteredPersons)
+            
 
     }
 
@@ -71,9 +84,15 @@ export default function PersonLists() {
         }, [person])
 
         useEffect(() => {
+            
             document.getElementById('searchfname').addEventListener("keyup", handlechange)
+            document.getElementById('searchlname').addEventListener("keyup", handlechange)
+            document.getElementById('searchage').addEventListener("keyup", handlechange)
+            
             return () => {
              document.getElementById('searchfname').removeEventListener("keyup", handlechange)
+             document.getElementById('searchlname').removeEventListener("keyup", handlechange)
+             document.getElementById('searchage').removeEventListener("keyup", handlechange)
                 
             }
         }, [searchByFName])
@@ -93,8 +112,8 @@ export default function PersonLists() {
                 <tr>
                     
                     <th>  <input type="text" id="searchfname" name="searchfname" value={searchByFName} onChange={handleSearchByName} /></th>
-                    <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange="" onChange={handleSearchByName} /></th>
-                    <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange="" onChange={handleSearchByName} /></th>
+                    <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange={handleSearchByName} /></th>
+                    <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange={handleSearchByName} /></th>
                    
                     
                 </tr>
