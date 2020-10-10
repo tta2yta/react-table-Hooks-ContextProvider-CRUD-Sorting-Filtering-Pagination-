@@ -16,6 +16,7 @@ export default function PersonLists() {
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
     const [sortToggle, setSortToggle]=useState(true)
+    const [sortIcon, setSortIcon]=useState(true)
 
     const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
     addNewPerson, editPerson, deletePesron, saveToggle]=useContext(AppContext)
@@ -68,16 +69,23 @@ export default function PersonLists() {
     }
 
 
-    const sortPersonList=()=>{
+    const sortPersonList=(feildName)=>{
         let  sortedData;
         setSortToggle(!sortToggle)
+        setSortIcon(!sortIcon)
         if(sortToggle==true){
-            sortedData= person.sort((a, b) => (a.fname.toUpperCase() > b.fname.toUpperCase()) ? 1 : -1)
+            if(feildName==='age')
+            sortedData= person.sort((a, b) => (Number(a[feildName]) > Number(b[feildName])) ? 1 : -1)
+            else
+            sortedData= person.sort((a, b) => (a[feildName].toUpperCase() > b[feildName].toUpperCase()) ? 1 : -1)
          //sortedData=person.sort((a, b)=> a.fname - b.fname)
         }
           
        if(sortToggle==false){
-        sortedData= person.sort((a, b) => (a.fname.toUpperCase() < b.fname.toUpperCase()) ? 1 : -1)
+        if(feildName==='age')
+        sortedData= person.sort((a, b) => (Number(a[feildName]) < Number(b[feildName])) ? 1 : -1)
+        else
+        sortedData= person.sort((a, b) => (a[feildName].toUpperCase() < b[feildName].toUpperCase()) ? 1 : -1)
         //sortedData=person.sort((a, b)=> b.fname - a.fname)
        }
         setPerson(sortedData)
@@ -126,10 +134,9 @@ export default function PersonLists() {
 
              <table border="1" width="100px">
                 <tr>
-                    <th><button onClick={()=>sortPersonList()}><i class="fa fa-sort-desc"></i>Fname</button></th>
-                    <th>Lname</th>
-                    <th>age</th>
-                    
+                    <th><button onClick={()=>sortPersonList('fname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Fname</button></th>
+                    <th><button onClick={()=>sortPersonList('lname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Lname</button></th>
+                    <th><button onClick={()=>sortPersonList('age')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Age</button></th>
                 </tr>
                 <tr>
                     
