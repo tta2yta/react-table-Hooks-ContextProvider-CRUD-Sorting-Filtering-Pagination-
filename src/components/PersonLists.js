@@ -39,7 +39,7 @@ export default function PersonLists() {
         
     }
 
-    const  handlechange=(e)=>{
+    const  handleFilter=(e)=>{
             //alert(e.target.id)
             console.log(personFinal)
             if(e.target.value==""){
@@ -59,6 +59,26 @@ export default function PersonLists() {
                     break;
             }
             setPerson(filteredPersons) 
+    }
+
+
+    const sortPersonList=()=>{
+        person.sort((a, b) => (a.fname > b.fname) ? 1 : -1)
+        setPerson(person)
+    }
+
+    function compare(a, b){
+        console.log(person)
+        const fname_a=person.fname.toUpperCase()
+        const fname_b=person.fname.toUpperCase()
+
+        let comparison=0
+        if(fname_a > fname_b)
+        comparison=1
+        else
+        comparison=-1
+
+        return comparison
     }
 
     
@@ -81,14 +101,14 @@ export default function PersonLists() {
 
         useEffect(() => {
             
-            document.getElementById('searchfname').addEventListener("keyup", handlechange)
-            document.getElementById('searchlname').addEventListener("keyup", handlechange)
-            document.getElementById('searchage').addEventListener("keyup", handlechange)
+            document.getElementById('searchfname').addEventListener("keyup", handleFilter)
+            document.getElementById('searchlname').addEventListener("keyup", handleFilter)
+            document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
-             document.getElementById('searchfname').removeEventListener("keyup", handlechange)
-             document.getElementById('searchlname').removeEventListener("keyup", handlechange)
-             document.getElementById('searchage').removeEventListener("keyup", handlechange)
+             document.getElementById('searchfname').removeEventListener("keyup", handleFilter)
+             document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
+             document.getElementById('searchage').removeEventListener("keyup", handleFilter)
                 
             }
         }, [searchByFName])
@@ -100,7 +120,7 @@ export default function PersonLists() {
 
              <table border="1" width="100px">
                 <tr>
-                    <th>Fname</th>
+                    <th><button onClick={()=>sortPersonList()}><i class="fa fa-sort-desc"></i>Fname</button></th>
                     <th>Lname</th>
                     <th>age</th>
                     
