@@ -3,13 +3,19 @@ import { v4 as uuidv4 } from 'uuid';
 import {AppContext} from './Context'
 
 
-
+const initialPerson=[
+    {id:0, fname:'Tedros', lname:'Tesfay', age:30},
+    {id:1, fname:'aaa', lname:'BBB', age:30},
+    {id:2, fname:'CCC', lname:'DDD', age:30},
+    {id:3, fname:'EEE', lname:'Tesfay', age:30},                  
+]
 
 export default function PersonLists() {
 
     const [searchByFName, setSearchByFName]=useState('')
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
+    const [sortToggle, setSortToggle]=useState(true)
 
     const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
     addNewPerson, editPerson, deletePesron, saveToggle]=useContext(AppContext)
@@ -63,25 +69,21 @@ export default function PersonLists() {
 
 
     const sortPersonList=()=>{
-        person.sort((a, b) => (a.fname > b.fname) ? 1 : -1)
-        setPerson(person)
+        let  sortedData;
+        setSortToggle(!sortToggle)
+        if(sortToggle==true){
+            sortedData= person.sort((a, b) => (a.fname.toUpperCase() > b.fname.toUpperCase()) ? 1 : -1)
+         //sortedData=person.sort((a, b)=> a.fname - b.fname)
+        }
+          
+       if(sortToggle==false){
+        sortedData= person.sort((a, b) => (a.fname.toUpperCase() < b.fname.toUpperCase()) ? 1 : -1)
+        //sortedData=person.sort((a, b)=> b.fname - a.fname)
+       }
+        setPerson(sortedData)
     }
 
-    function compare(a, b){
-        console.log(person)
-        const fname_a=person.fname.toUpperCase()
-        const fname_b=person.fname.toUpperCase()
 
-        let comparison=0
-        if(fname_a > fname_b)
-        comparison=1
-        else
-        comparison=-1
-
-        return comparison
-    }
-
-    
 
             // to do side effect when Dom changes 
             useEffect(()=>{
@@ -89,15 +91,15 @@ export default function PersonLists() {
             //call it later after performing the DOM updates.
             //By default, it runs both after the first render and after every update.
             //Mounting, Rendering or    after render
-            console.log("person object at useeffect"+ person)
-            
-
+            setPerson(person)
+            console.log(person)
+           
             // React performs the cleanup when the component unmounts.
             return()=>{
                 // document.getElementById('searchfname').removeEventListener("keyup", handlechange)
-                // setPerson(person)
+                 //setPerson(person)
             }
-        }, [person])
+        },[person, sortToggle])
 
         useEffect(() => {
             
@@ -112,6 +114,10 @@ export default function PersonLists() {
                 
             }
         }, [searchByFName])
+
+        useEffect(()=>{
+            setPerson(initialPerson)
+        },[])
 
 
     return (
@@ -130,11 +136,10 @@ export default function PersonLists() {
                     <th>  <input type="text" id="searchfname" name="searchfname" value={searchByFName} onChange={handleSearchByName} /></th>
                     <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange={handleSearchByName} /></th>
                     <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange={handleSearchByName} /></th>
-                   
-                    
                 </tr>
+                {console.log(person)}
                 {person.map((item, key)=>
-            (
+            (  
                
                     <tr key={key}>
                         <td id="fname">{item.fname}</td>
