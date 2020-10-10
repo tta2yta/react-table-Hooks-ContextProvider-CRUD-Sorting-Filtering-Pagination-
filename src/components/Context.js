@@ -16,6 +16,7 @@ export const AppContextProvider=(props)=>{
         const[saveToggle, setSaveToggle]=useState(false)
         const[updItem, setUpdItem]=useState([])
         const [personFinal, setPersonFinal]=useState([])
+        const [cancelBtn, setCancelBtn]=useState(true)
 
         const addNewPerson=(e)=>{
 
@@ -45,6 +46,7 @@ export const AppContextProvider=(props)=>{
 
         const  editPerson =(editItem)=>{
             setSaveToggle(true)
+            setCancelBtn(false)
             setId(editItem.id)
             setFname(editItem.fname)
             setLname(editItem.lname)
@@ -62,12 +64,20 @@ export const AppContextProvider=(props)=>{
 
             }
 
+            const cancelUpdate=()=>{
+                setSaveToggle(false)
+                setCancelBtn(true)
+                setFname('')
+                setLname('')
+                setAge(18)
+            }
+
 
 
 
         return(
             <AppContext.Provider value={[person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
-                addNewPerson, editPerson, deletePesron, saveToggle]}>
+                addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate]}>
                 
                 {props.children}
                 {/* {children} */}

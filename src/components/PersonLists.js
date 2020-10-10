@@ -19,7 +19,7 @@ export default function PersonLists() {
     const [sortIcon, setSortIcon]=useState(true)
 
     const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
-    addNewPerson, editPerson, deletePesron, saveToggle]=useContext(AppContext)
+    addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn]=useContext(AppContext)
 
 
     const handleFname=e=>{
@@ -93,6 +93,8 @@ export default function PersonLists() {
 
 
 
+
+
             // to do side effect when Dom changes 
             useEffect(()=>{
 
@@ -125,6 +127,7 @@ export default function PersonLists() {
 
         useEffect(()=>{
             setPerson(initialPerson)
+            console.log(cancelBtn)
         },[])
 
 
@@ -162,11 +165,11 @@ export default function PersonLists() {
 
 <tr>
                     
-                    <th>  <input type="text" name="fname" value={fname} onChange={handleFname} /></th>
+                    <th> <input type="text" name="fname" value={fname} onChange={handleFname} /></th>
                     <th><input type="text" name="lname" value={lname} onChange={handelLname} /></th>
                     <th><input type="text" name="age" value={age} onChange={handelAge} /></th>
-                   <th colSpan="2"><input type="button" value={saveToggle ? 'Update':'Add person'} onClick={addNewPerson} /></th> 
-                    
+                   <th><input type="button" id="add" value={saveToggle ? 'Update':'Add Person'} onClick={addNewPerson} /></th> 
+                   <th><input type="button" value="Cancel Update" onClick={cancelUpdate} disabled={cancelBtn ? 'true' : ''} /></th> 
                 </tr>
             </table>
             
