@@ -5,10 +5,16 @@ export const AppContext= createContext()
 
 const {Provider} = AppContext
 
+const initialPerson=[
+    {id:0, fname:'Tedros', lname:'Tesfay', age:30},
+    {id:1, fname:'aaa', lname:'BBB', age:30},
+    {id:2, fname:'CCC', lname:'DDD', age:30},
+    {id:3, fname:'EEE', lname:'Tesfay', age:30},                  
+]
 
 export const AppContextProvider=(props)=>{
     //export const AppContextProvider=({children})=>{
-        const[person, setPerson]=useState([])
+        const[person, setPerson]=useState(initialPerson)
         const[id, setId]=useState(0)
         const[fname, setFname]=useState('')
         const[lname, setLname]=useState('')
@@ -17,6 +23,9 @@ export const AppContextProvider=(props)=>{
         const[updItem, setUpdItem]=useState([])
         const [personFinal, setPersonFinal]=useState([])
         const [cancelBtn, setCancelBtn]=useState(true)
+        const [itemsPerPage, setItemsPerPage]=useState(3)
+        const [numPages, setNumPages]=useState(1)
+        const [currPageNum, setCurrpageNum]=useState(0)
 
         const addNewPerson=(e)=>{
 
@@ -77,7 +86,8 @@ export const AppContextProvider=(props)=>{
 
         return(
             <AppContext.Provider value={[person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
-                addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate]}>
+                addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn,
+                itemsPerPage, setItemsPerPage,numPages, setNumPages, currPageNum, setCurrpageNum]}>
                 
                 {props.children}
                 {/* {children} */}

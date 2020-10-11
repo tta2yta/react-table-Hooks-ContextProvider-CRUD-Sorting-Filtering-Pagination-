@@ -3,12 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import {AppContext} from './Context'
 
 
-const initialPerson=[
-    {id:0, fname:'Tedros', lname:'Tesfay', age:30},
-    {id:1, fname:'aaa', lname:'BBB', age:30},
-    {id:2, fname:'CCC', lname:'DDD', age:30},
-    {id:3, fname:'EEE', lname:'Tesfay', age:30},                  
-]
 
 export default function PersonLists() {
 
@@ -19,7 +13,8 @@ export default function PersonLists() {
     const [sortIcon, setSortIcon]=useState(true)
 
     const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
-    addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn]=useContext(AppContext)
+    addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn,
+    itemsPerPage, setItemsPerPage,numPages, setNumPages, currPageNum, setCurrpageNum]=useContext(AppContext)
 
 
     const handleFname=e=>{
@@ -102,7 +97,7 @@ export default function PersonLists() {
             //By default, it runs both after the first render and after every update.
             //Mounting, Rendering or    after render
             setPerson(person)
-            console.log(person)
+            console.log(person.slice(1,2))
            
             // React performs the cleanup when the component unmounts.
             return()=>{
@@ -126,8 +121,9 @@ export default function PersonLists() {
         }, [searchByFName])
 
         useEffect(()=>{
-            setPerson(initialPerson)
-            console.log(cancelBtn)
+            setNumPages(Math.ceil(person.length / itemsPerPage))
+            console.log(numPages)
+            setPerson(person.slice(0,2))
         },[])
 
 
@@ -147,7 +143,6 @@ export default function PersonLists() {
                     <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange={handleSearchByName} /></th>
                     <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange={handleSearchByName} /></th>
                 </tr>
-                {console.log(person)}
                 {person.map((item, key)=>
             (  
                
