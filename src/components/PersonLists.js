@@ -5,16 +5,18 @@ import {AppContext} from './Context'
 
 
 export default function PersonLists() {
+    const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
+        addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn,
+        itemsPerPage, setItemsPerPage,numPages, setNumPages, currPageNum, setCurrpageNum]=useContext(AppContext)
 
     const [searchByFName, setSearchByFName]=useState('')
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
     const [sortToggle, setSortToggle]=useState(true)
     const [sortIcon, setSortIcon]=useState(true)
+    const [num, setNum]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
 
-    const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname,age,setAge,
-    addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn,
-    itemsPerPage, setItemsPerPage,numPages, setNumPages, currPageNum, setCurrpageNum]=useContext(AppContext)
+    
 
 
     const handleFname=e=>{
@@ -88,16 +90,22 @@ export default function PersonLists() {
 
 
 
+    useEffect(()=>{
+        //let val=(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
+        setPerson(person.slice(0, itemsPerPage))
+    },[])
 
-
-            // to do side effect when Dom changes 
+            // to do side effect when Dom changes/ after render
             useEffect(()=>{
 
             //call it later after performing the DOM updates.
             //By default, it runs both after the first render and after every update.
             //Mounting, Rendering or    after render
-            setPerson(person)
-            console.log(person.slice(1,2))
+            
+            console.log(person)
+            let val=(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
+            //console.log(val1)
+            setNumPages(val)
            
             // React performs the cleanup when the component unmounts.
             return()=>{
@@ -120,11 +128,7 @@ export default function PersonLists() {
             }
         }, [searchByFName])
 
-        useEffect(()=>{
-            setNumPages(Math.ceil(person.length / itemsPerPage))
-            console.log(numPages)
-            setPerson(person.slice(0,2))
-        },[])
+      
 
 
     return (
@@ -143,6 +147,7 @@ export default function PersonLists() {
                     <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange={handleSearchByName} /></th>
                     <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange={handleSearchByName} /></th>
                 </tr>
+                {console.log(numPages)}
                 {person.map((item, key)=>
             (  
                

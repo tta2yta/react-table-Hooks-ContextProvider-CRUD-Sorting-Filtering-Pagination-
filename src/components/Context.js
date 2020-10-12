@@ -24,7 +24,7 @@ export const AppContextProvider=(props)=>{
         const [personFinal, setPersonFinal]=useState([])
         const [cancelBtn, setCancelBtn]=useState(true)
         const [itemsPerPage, setItemsPerPage]=useState(3)
-        const [numPages, setNumPages]=useState(1)
+        const [numPages, setNumPages]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
         const [currPageNum, setCurrpageNum]=useState(0)
 
         const addNewPerson=(e)=>{
