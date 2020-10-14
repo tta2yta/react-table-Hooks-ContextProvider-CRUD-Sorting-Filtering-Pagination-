@@ -37,13 +37,17 @@ useEffect(()=>{
     return (
         <div>
             <button onClick={()=>setCurrpageNum(0)} value="First" disabled={`${currPageNum == 0 ? true : ''}`} >
-                <i class="fa fa-step-backward"></i>
+            <i class="fas fa-fast-backward"></i>
             </button>
-            <input type="button" onClick={()=>prevBtnHandler()} value="Prev" width="30px" height="10px"
-            disabled={`${currPageNum == 0 ? 'true' : ''}`} />
+            <button onClick={()=>prevBtnHandler()} value="Prev" width="30px" height="10px"
+            disabled={`${currPageNum == 0 ? 'true' : ''}`} ><i class="fa fa-step-backward"></i></button>
             <input type="button" onClick="" value={`Current Page : ${currPageNum + 1} ` }/>
-            <input type="button" onClick={()=>nextBtnHandler()} value="Next" disabled={`${currPageNum + 1 == numPages ? true : ''}`} />
-            <input type="button" onClick={()=>setCurrpageNum(numPages - 1)} value="Last" disabled={`${currPageNum == numPages - 1 ? true : ''}`} />
+            <button onClick={()=>nextBtnHandler()} value="Next" disabled={`${currPageNum + 1 == numPages ? true : ''}`} >
+
+            </button>
+            <button onClick={()=>setCurrpageNum(numPages - 1)} value="Last" disabled={`${currPageNum == numPages - 1 ? true : ''}`} >
+                
+            </button>
               {numPages}
               {console.log(personFinal.slice(3,3))}
               {`person lenght= ${personFinal.length}`}
