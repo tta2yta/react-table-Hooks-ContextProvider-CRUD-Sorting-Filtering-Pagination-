@@ -4,34 +4,30 @@ import {AppContext} from './Context'
 
 export default function Pagination() {
 
-    // const [person, setPerson, personFinal, setPersonFinal, 
-    //     itemsPerPage, setItemsPerPage,numPages, setNumPages, currPageNum, setCurrpageNum]=useContext(AppContext)
 
 const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname, age, setAge,
         addNewPerson, editPerson, deletePesron, saveToggle, cancelUpdate, cancelBtn,
         itemsPerPage, setItemsPerPage,numPages, setNumPages, currPageNum, setCurrpageNum]=useContext(AppContext)
 
         const prevBtnHandler=()=>{
-    if(currPageNum != 0)
-    {
-        currPageNum <= 0 ? setCurrpageNum(0) : setCurrpageNum(prevState=> --prevState)
-    }
-   
+                if(currPageNum != 0)
+                {
+                    currPageNum <= 0 ? setCurrpageNum(0) : setCurrpageNum(prevState=> --prevState)
+                }
+            }
 
-}
-
-const nextBtnHandler=()=>{
-    //alert(numPages)
-    if(currPageNum + 1 < numPages)
-    {
-        
-        currPageNum + 1 == numPages ? setCurrpageNum(numPages) : setCurrpageNum(prevState=> ++prevState)
-       // alert(currPageNum)
-    }
-}
-useEffect(()=>{ 
-    setPerson(prevState=>personFinal.slice((currPageNum * 3), (currPageNum *3 + itemsPerPage)))}
-, [currPageNum])
+        const nextBtnHandler=()=>{
+            //alert(numPages)
+            if(currPageNum + 1 < numPages)
+            {
+                
+                currPageNum + 1 == numPages ? setCurrpageNum(numPages) : setCurrpageNum(prevState=> ++prevState)
+            // alert(currPageNum)
+            }
+        }
+        useEffect(()=>{ 
+            setPerson(prevState=>personFinal.slice((currPageNum * 3), (currPageNum *3 + itemsPerPage)))}
+        , [currPageNum])
 
 
     return (
