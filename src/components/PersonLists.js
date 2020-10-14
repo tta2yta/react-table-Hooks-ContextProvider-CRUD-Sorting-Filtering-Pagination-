@@ -229,9 +229,11 @@ export default function PersonLists() {
             )
         }
       <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+      <td> <input type="text" name="fname" value={fname} onChange={handleFname} /></td>
+                    <td><input type="text" name="lname" value={lname} onChange={handelLname} /></td>
+                    <td><input type="text" name="age" value={age} onChange={handelAge} /></td>
+                   <td><input type="button" id="add" value={saveToggle ? 'Update':'Add Person'} onClick={addNewPerson} /></td> 
+                   <td><input type="button" value="Cancel Update" onClick={cancelUpdate} disabled={cancelBtn ? 'true' : ''} /></td> 
       </tr>
     </tbody>
   </table>
