@@ -72,7 +72,14 @@ export default function PersonLists() {
         setSortIcon(!sortIcon)
         if(sortToggle==true){
             if(feildName==='age')
-            sortedData= person.sort((a, b) => (Number(a[feildName]) > Number(b[feildName])) ? 1 : -1)
+            sortedData= person.sort((a, b) => {
+                if(Number(a[feildName]) < Number(b[feildName])) 
+                return 1
+                else
+                return -1
+     
+                return 0
+             })
             else
             sortedData= person.sort((a, b) => (a[feildName].toUpperCase() > b[feildName].toUpperCase()) ? 1 : -1)
          //sortedData=person.sort((a, b)=> a.fname - b.fname)
@@ -80,8 +87,15 @@ export default function PersonLists() {
           
        if(sortToggle==false){
         if(feildName==='age')
-        sortedData= person.sort((a, b) => (Number(a[feildName]) < Number(b[feildName])) ? 1 : -1)
-        else
+        sortedData= person.sort((a, b) => {
+           if(Number(a[feildName]) < Number(b[feildName])) 
+           return 1
+           else
+           return -1
+
+           return 0
+        })
+      else
         sortedData= person.sort((a, b) => (a[feildName].toUpperCase() < b[feildName].toUpperCase()) ? 1 : -1)
         //sortedData=person.sort((a, b)=> b.fname - a.fname)
        }
@@ -91,7 +105,9 @@ export default function PersonLists() {
 
 
     useEffect(()=>{
-        //let val=(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
+        let val=(Math.ceil(parseFloat(personFinal.length)/parseFloat(itemsPerPage)))
+        //console.log(val1)
+        setNumPages(val)
         setPerson(person.slice(0, itemsPerPage))
     },[])
 
@@ -103,7 +119,11 @@ export default function PersonLists() {
             //Mounting, Rendering or    after render
             
             console.log(person)
-            let val=(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
+            //person.slice(currPageNum *3, 3)
+            console.log(numPages)
+            console.log(currPageNum)
+            //person.slice(currPageNum * 3, 3)
+            let val=(Math.ceil(parseFloat(personFinal.length)/parseFloat(itemsPerPage)))
             //console.log(val1)
             setNumPages(val)
            
@@ -112,7 +132,7 @@ export default function PersonLists() {
                 // document.getElementById('searchfname').removeEventListener("keyup", handlechange)
                  //setPerson(person)
             }
-        },[person, sortToggle])
+        },[person, sortToggle, currPageNum, numPages])
 
         useEffect(() => {
             
@@ -137,7 +157,7 @@ export default function PersonLists() {
 
              <table border="1" width="100px">
                 <tr>
-                    <th><button onClick={()=>sortPersonList('fname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Fname</button></th>
+                    <th><button  onClick={()=>sortPersonList('fname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Fname</button> </th>
                     <th><button onClick={()=>sortPersonList('lname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Lname</button></th>
                     <th><button onClick={()=>sortPersonList('age')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Age</button></th>
                 </tr>
@@ -173,6 +193,51 @@ export default function PersonLists() {
                 </tr>
             </table>
             
+
+
+            <div class="container">
+  <h2>Dark Striped Table</h2>
+  <p>Combine .table-dark and .table-striped to create a dark, striped table:</p>            
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th><button type="button" class="btn btn-primary" onClick={()=>sortPersonList('fname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Fname</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={()=>sortPersonList('lname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Lname</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={()=>sortPersonList('age')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Age</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       
+        <td><input type="text" id="searchfname" name="searchfname" placeholder="Search By First Name" value={searchByFName} onChange={handleSearchByName} /></td>
+        <td><input type="text" id="searchlname" name="searchlname" placeholder="Search By Last Name" value={searchByLName} onChange={handleSearchByName} /></td>
+        <td><input type="text" id="searchage" name="searchage" placeholder="Search By Age" value={searchByAge} onChange={handleSearchByName} /></td>
+      </tr>
+      {person.map((item, key)=>
+            (  
+               
+                    <tr key={key}>
+                        <td id="fname">{item.fname}</td>
+                        <td id="lname">{item.lname}</td>
+                        <td id="age">{item.age}</td>
+                        <td><button type="button" class="btn btn-warning"  onClick={()=>editPerson(item)} >Edit</button></td> 
+                        <td><input type="button" class="btn btn-danger" value="Delete" onClick={()=>deletePesron(item)} /></td> 
+                    
+                    </tr>
+
+                )
+            )
+        }
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
         </div>
     )
 }

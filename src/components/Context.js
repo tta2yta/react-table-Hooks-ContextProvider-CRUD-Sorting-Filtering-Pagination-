@@ -9,19 +9,20 @@ const initialPerson=[
     {id:0, fname:'Tedros', lname:'Tesfay', age:30},
     {id:1, fname:'aaa', lname:'BBB', age:30},
     {id:2, fname:'CCC', lname:'DDD', age:30},
-    {id:3, fname:'EEE', lname:'Tesfay', age:30},                  
+    {id:3, fname:'EEE', lname:'Tesfay', age:30},
+    {id:3, fname:'bb', lname:'ff', age:20}                 
 ]
 
 export const AppContextProvider=(props)=>{
     //export const AppContextProvider=({children})=>{
-        const[person, setPerson]=useState(initialPerson)
-        const[id, setId]=useState(0)
-        const[fname, setFname]=useState('')
-        const[lname, setLname]=useState('')
-        const[age, setAge]=useState(0)
-        const[saveToggle, setSaveToggle]=useState(false)
-        const[updItem, setUpdItem]=useState([])
-        const [personFinal, setPersonFinal]=useState([])
+        const [person, setPerson]=useState(initialPerson)
+        const [id, setId]=useState(0)
+        const [fname, setFname]=useState('')
+        const [lname, setLname]=useState('')
+        const [age, setAge]=useState(0)
+        const [saveToggle, setSaveToggle]=useState(false)
+        const [updItem, setUpdItem]=useState([])
+        const [personFinal, setPersonFinal]=useState(initialPerson)
         const [cancelBtn, setCancelBtn]=useState(true)
         const [itemsPerPage, setItemsPerPage]=useState(3)
         const [numPages, setNumPages]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
@@ -61,6 +62,7 @@ export const AppContextProvider=(props)=>{
             setLname(editItem.lname)
             setAge(editItem.age)
             setUpdItem(editItem)
+            setPersonFinal(person)
            
         }
 
