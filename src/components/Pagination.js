@@ -35,7 +35,8 @@ useEffect(()=>{
 
 
     return (
-        <div>
+        <div className="pagination">
+            <p>
             <button onClick={()=>setCurrpageNum(0)} value="First" disabled={`${currPageNum == 0 ? true : ''}`} >
             <i class="fa fa-fast-backward"></i>
             </button>
@@ -48,9 +49,7 @@ useEffect(()=>{
             <button onClick={()=>setCurrpageNum(numPages - 1)} value="Last" disabled={`${currPageNum == numPages - 1 ? true : ''}`} >
             <i class="fa fa-fast-forward"></i>
             </button>
-              {numPages}
-              {console.log(personFinal.slice(3,3))}
-              {`person lenght= ${personFinal.length}`}
+              </p>
         </div>
       
     )

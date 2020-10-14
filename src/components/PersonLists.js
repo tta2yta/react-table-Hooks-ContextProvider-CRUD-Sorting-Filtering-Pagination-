@@ -152,51 +152,8 @@ export default function PersonLists() {
 
 
     return (
-        <div>
-             <h5>React Table with Full Functionality</h5>
-
-             <table border="1" width="100px">
-                <tr>
-                    <th><button  onClick={()=>sortPersonList('fname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Fname</button> </th>
-                    <th><button onClick={()=>sortPersonList('lname')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Lname</button></th>
-                    <th><button onClick={()=>sortPersonList('age')}><i class={`fa fa-sort-${sortIcon? 'asc' : 'desc'}`}></i>Age</button></th>
-                </tr>
-                <tr>
-                    
-                    <th>  <input type="text" id="searchfname" name="searchfname" value={searchByFName} onChange={handleSearchByName} /></th>
-                    <th><input type="text" id="searchlname" name="searchlname" value={searchByLName} onChange={handleSearchByName} /></th>
-                    <th><input type="text" id="searchage" name="searchage" value={searchByAge} onChange={handleSearchByName} /></th>
-                </tr>
-                {console.log(numPages)}
-                {person.map((item, key)=>
-            (  
-               
-                    <tr key={key}>
-                        <td id="fname">{item.fname}</td>
-                        <td id="lname">{item.lname}</td>
-                        <td id="age">{item.age}</td>
-                        <td><button  onClick={()=>editPerson(item)} >Edit</button></td> 
-                        <td><input type="button" value="Delete" onClick={()=>deletePesron(item)} /></td> 
-                    
-                    </tr>
-
-                )
-                )}
-
-<tr>
-                    
-                    <th> <input type="text" name="fname" value={fname} onChange={handleFname} /></th>
-                    <th><input type="text" name="lname" value={lname} onChange={handelLname} /></th>
-                    <th><input type="text" name="age" value={age} onChange={handelAge} /></th>
-                   <th><input type="button" id="add" value={saveToggle ? 'Update':'Add Person'} onClick={addNewPerson} /></th> 
-                   <th><input type="button" value="Cancel Update" onClick={cancelUpdate} disabled={cancelBtn ? 'true' : ''} /></th> 
-                </tr>
-            </table>
-            
-
-
-            <div class="container">
-  <h2>Dark Striped Table</h2>
+ <div class="container">
+  <h2>React Table with Full Functionality</h2>
   <p>Combine .table-dark and .table-striped to create a dark, striped table:</p>            
   <table class="table table-dark table-striped">
     <thead>
@@ -239,7 +196,5 @@ export default function PersonLists() {
   </table>
 </div>
 
-
-        </div>
     )
 }
