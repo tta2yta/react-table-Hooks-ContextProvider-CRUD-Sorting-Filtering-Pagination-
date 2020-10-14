@@ -36,7 +36,7 @@ useEffect(()=>{
 
     return (
         <div>
-            <input type="button" onClick={()=>setCurrpageNum(0)} value="First" disabled={`${currPageNum == 0 ? true : ''}`} />
+            <button onClick={()=>setCurrpageNum(0)} value="First" disabled={`${currPageNum == 0 ? true : ''}`} ><i class="fas fa-step-backward"></i></button>
             <input type="button" onClick={()=>prevBtnHandler()} value="Prev" width="30px" height="10px"
             disabled={`${currPageNum == 0 ? 'true' : ''}`} />
             <input type="button" onClick="" value={`Current Page : ${currPageNum + 1} ` }/>

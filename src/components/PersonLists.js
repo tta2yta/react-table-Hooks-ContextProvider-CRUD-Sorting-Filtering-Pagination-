@@ -230,8 +230,8 @@ export default function PersonLists() {
         }
       <tr>
         <td> <input type="text" name="fname" placeholder="Enter First Name" value={fname} onChange={handleFname} /></td>
-        <td><input type="text" name="lname" value={lname} onChange={handelLname} /></td>
-        <td><input type="text" name="age" value={age} onChange={handelAge} /></td>
+        <td><input type="text" name="lname" placeholder="Enter Last Name" value={lname} onChange={handelLname} /></td>
+        <td><input type="text" name="age" placeholder="Enter Age" value={age} onChange={handelAge} /></td>
         <td><input type="button" class="btn btn-primary" id="add" value={saveToggle ? 'Update':'Add Person'} onClick={addNewPerson} /></td> 
         <td><input type="button" class="btn btn-danger" value="Cancel Update" onClick={cancelUpdate} disabled={cancelBtn ? 'true' : ''} /></td> 
       </tr>
