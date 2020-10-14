@@ -37,16 +37,16 @@ useEffect(()=>{
     return (
         <div>
             <button onClick={()=>setCurrpageNum(0)} value="First" disabled={`${currPageNum == 0 ? true : ''}`} >
-            <i class="fas fa-fast-backward"></i>
+            <i class="fa fa-fast-backward"></i>
             </button>
             <button onClick={()=>prevBtnHandler()} value="Prev" width="30px" height="10px"
             disabled={`${currPageNum == 0 ? 'true' : ''}`} ><i class="fa fa-step-backward"></i></button>
             <input type="button" onClick="" value={`Current Page : ${currPageNum + 1} ` }/>
             <button onClick={()=>nextBtnHandler()} value="Next" disabled={`${currPageNum + 1 == numPages ? true : ''}`} >
-
+            <i class="fa fa-step-forward"></i>
             </button>
             <button onClick={()=>setCurrpageNum(numPages - 1)} value="Last" disabled={`${currPageNum == numPages - 1 ? true : ''}`} >
-                
+            <i class="fa fa-fast-forward"></i>
             </button>
               {numPages}
               {console.log(personFinal.slice(3,3))}
