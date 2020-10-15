@@ -5,3 +5,10 @@ body{
   text-align: center;
   margin: auto;
 }
+h2{
+  margin-top: 100px;
+  text-align: center;
+}
+.modal{
+  width: 900px;
+}
