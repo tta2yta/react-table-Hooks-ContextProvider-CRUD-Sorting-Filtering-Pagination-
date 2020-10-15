@@ -153,7 +153,7 @@ export default function PersonLists() {
 
     return (
  <div class="container">
-  <h2 className="">React Table with Full Functionality</h2> 
+  <h2 className="">React Table with Full </h2> 
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Add New Person
   </button>     
@@ -201,7 +201,7 @@ export default function PersonLists() {
  
 
   <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
       
        
@@ -212,10 +212,14 @@ export default function PersonLists() {
         
    
         <div class="modal-body">
-        <td> <input type="text" name="fname" placeholder="Enter First Name" value={fname} onChange={handleFname} /></td>
-        <td><input type="text" name="lname" placeholder="Enter Last Name" value={lname} onChange={handelLname} /></td>
-        <td><input type="text" name="age" placeholder="Enter Age" value={age} onChange={handelAge} /></td>
-        <td><input type="button" class="btn btn-primary" id="add" value={saveToggle ? 'Update':'Add Person'} onClick={addNewPerson} /></td> 
+        <div class="container-fluid">
+        <div class="row">
+         <div className="col-md-12"><td> <input type="text" name="fname" placeholder="Enter First Name" value={fname} onChange={handleFname} /></td></div>   
+         <div className="col-md-12"><td><input type="text" name="lname" placeholder="Enter Last Name" value={lname} onChange={handelLname} /></td></div>  
+         <div className="col-md-12"> <td><input type="text" name="age" placeholder="Enter Age" value={age} onChange={handelAge} /></td></div> 
+         <div className="col-md-12"><td><input type="button" class="btn btn-primary" id="add" value={saveToggle ? 'Update':'Add Person'} onClick={addNewPerson} /></td> </div>  
+        </div>
+        </div>
         </div>
         
         
