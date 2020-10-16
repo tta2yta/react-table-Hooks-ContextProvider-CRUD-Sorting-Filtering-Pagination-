@@ -44,6 +44,10 @@ export default function PersonLists() {
         
     }
 
+    const handleSearchByAny =()=>{
+
+    }
+
     const  handleFilter=(e)=>{
             //alert(e.target.id)
             console.log(personFinal)
@@ -167,11 +171,11 @@ export default function PersonLists() {
     Search By Name
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">First Name</a>
-    <a class="dropdown-item" href="#">Last Name</a>
-    <a class="dropdown-item" href="#">Age</a>
+    <a name="fname" class="dropdown-item" href="#" onClick={()=>drpSearcByAny('fanme')}>First Name</a>
+    <a name="lname" class="dropdown-item" href="#" onClick={()=>drpSearcByAny('lanme')}>Last Name</a>
+    <a name="age" class="dropdown-item" href="#" onClick={()=>drpSearcByAny('age')}>Age</a>
   </div>
-  <input type="text" id="srchtxt" name="searchfname" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByName} />
+  <input type="text" id="srchtxt" name="searchfname" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByAny} />
 </div>
 
   </div>
