@@ -209,7 +209,6 @@ export default function PersonLists() {
           <h4 class="modal-title">Add New Person</h4>
           <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
-        
    
         <div class="modal-body">
         <div class="container-fluid">
