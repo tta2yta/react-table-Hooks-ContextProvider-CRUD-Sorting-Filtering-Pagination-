@@ -12,6 +12,7 @@ export default function PersonLists() {
     const [searchByFName, setSearchByFName]=useState('')
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
+    const [searchByAny, setSearchByAny]=useState('')
     const [sortToggle, setSortToggle]=useState(true)
     const [sortIcon, setSortIcon]=useState(true)
     const [num, setNum]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
@@ -170,7 +171,7 @@ export default function PersonLists() {
     <a class="dropdown-item" href="#">Last Name</a>
     <a class="dropdown-item" href="#">Age</a>
   </div>
-  <input type="text" id="srchtxt" name="searchfname" placeholder="Search By First Name" value={searchByFName} onChange={handleSearchByName} />
+  <input type="text" id="srchtxt" name="searchfname" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByName} />
 </div>
 
   </div>
