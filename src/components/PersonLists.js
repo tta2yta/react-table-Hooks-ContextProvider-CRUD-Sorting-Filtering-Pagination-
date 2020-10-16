@@ -76,6 +76,7 @@ export default function PersonLists() {
     }
 
     const handleFilterByAny=()=>{
+      let filteredPersons;
       if(searchByAnyProp==='' && searchByAny===''){
         setPerson(personFinal)
         return;
@@ -192,14 +193,12 @@ export default function PersonLists() {
 
   
   <div class="dropdown">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    Search By Name
-  </button>
-  <div class="dropdown-menu">
-    <a name="fname" class="dropdown-item" href="#" onClick={()=>drpSearcByAny('fanme')}>First Name</a>
-    <a name="lname" class="dropdown-item" href="#" onClick={()=>drpSearcByAny('lanme')}>Last Name</a>
-    <a name="age" class="dropdown-item" href="#" onClick={()=>drpSearcByAny('age')}>Age</a>
-  </div>
+  <select class="custom-select">
+  <option selected>Select Field to Search</option>
+  <option value="fname">First Name</option>
+  <option value="lname">Last Name</option>
+  <option value="age">Age</option>
+</select>
   <input type="text" id="srchtxt" name="searchfname" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByAny} />
 </div>
 

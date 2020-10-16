@@ -20,3 +20,7 @@ h2{
 #srchtxt{
   margin-left: 20px;
 }
+
+.custom-select{
+  max-width: 150px;
+}
