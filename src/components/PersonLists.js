@@ -13,6 +13,7 @@ export default function PersonLists() {
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
     const [searchByAny, setSearchByAny]=useState('')
+    const [searchByAnyProp, setSearchByAnyProp]=useState('')
     const [sortToggle, setSortToggle]=useState(true)
     const [sortIcon, setSortIcon]=useState(true)
     const [num, setNum]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
@@ -44,8 +45,12 @@ export default function PersonLists() {
         
     }
 
-    const handleSearchByAny =()=>{
+    const handleSearchByAny =(e)=>{
+        setSearchByAny(e.target.value)
+    }
 
+    const drpSearcByAny=(srchValProp)=>{
+      setSearchByAnyProp(srchValProp)
     }
 
     const  handleFilter=(e)=>{
@@ -142,12 +147,13 @@ export default function PersonLists() {
 
         useEffect(() => {
             
-            document.getElementById('searchfname').addEventListener("keyup", handleFilter)
+            document.getElementById('srchtxt').addEventListener("keyup", handleFilter)
             document.getElementById('searchlname').addEventListener("keyup", handleFilter)
+            document.getElementById('searchage').addEventListener("keyup", handleFilter)
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
-             document.getElementById('searchfname').removeEventListener("keyup", handleFilter)
+             document.getElementById('srchtxt').removeEventListener("keyup", handleFilter)
              document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchage').removeEventListener("keyup", handleFilter)
                 
