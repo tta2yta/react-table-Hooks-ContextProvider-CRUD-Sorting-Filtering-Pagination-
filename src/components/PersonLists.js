@@ -76,7 +76,7 @@ export default function PersonLists() {
     }
 
     const handleFilterByAny=()=>{
-      if(searchByAnyProp===''){
+      if(searchByAnyProp==='' && searchByAny===''){
         setPerson(personFinal)
         return;
       }
@@ -89,6 +89,7 @@ export default function PersonLists() {
      else if(searchByAnyProp === 'age'){
       filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
      }
+     setPerson(filteredPersons)
 
     }
 
