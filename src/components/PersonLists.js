@@ -147,12 +147,13 @@ export default function PersonLists() {
 
         useEffect(() => {
             
-            document.getElementById('srchtxt').addEventListener("keyup", handleFilter)
+            document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
             document.getElementById('searchlname').addEventListener("keyup", handleFilter)
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
+              document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
              document.getElementById('srchtxt').removeEventListener("keyup", handleFilter)
              document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchage').removeEventListener("keyup", handleFilter)
