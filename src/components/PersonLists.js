@@ -155,9 +155,24 @@ export default function PersonLists() {
     return (
  <div class="container">
   <h2 className="">React Table with Full Functionality </h2> 
+  <div>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Add New Person
-  </button>     
+  </button>  
+
+  
+  <div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Link 1</a>
+    <a class="dropdown-item" href="#">Link 2</a>
+    <a class="dropdown-item" href="#">Link 3</a>
+  </div>
+</div>
+
+  </div>
   <table class="table table-dark table-striped">
     <thead>
       <tr>
