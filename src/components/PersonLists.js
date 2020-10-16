@@ -153,7 +153,7 @@ export default function PersonLists() {
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
-              document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
+             document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
              document.getElementById('srchtxt').removeEventListener("keyup", handleFilter)
              document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchage').removeEventListener("keyup", handleFilter)
