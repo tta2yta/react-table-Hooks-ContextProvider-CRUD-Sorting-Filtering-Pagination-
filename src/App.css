@@ -12,3 +12,11 @@ h2{
 .modal{
   width: 900px;
 }
+
+.dropdown{
+  margin-left: 30px;
+  display: inline;
+}
+#srchtxt{
+  margin-left: 20px;
+}

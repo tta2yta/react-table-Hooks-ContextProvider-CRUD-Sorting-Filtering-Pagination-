@@ -155,7 +155,7 @@ export default function PersonLists() {
     return (
  <div class="container">
   <h2 className="">React Table with Full Functionality </h2> 
-  <div>
+  <div className="srch-sec">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Add New Person
   </button>  
@@ -163,13 +163,14 @@ export default function PersonLists() {
   
   <div class="dropdown">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    Dropdown button
+    Search By Name
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
+    <a class="dropdown-item" href="#">First Name</a>
+    <a class="dropdown-item" href="#">Last Name</a>
+    <a class="dropdown-item" href="#">Age</a>
   </div>
+  <input type="text" id="srchtxt" name="searchfname" placeholder="Search By First Name" value={searchByFName} onChange={handleSearchByName} />
 </div>
 
   </div>
