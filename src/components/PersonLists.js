@@ -49,8 +49,9 @@ export default function PersonLists() {
         setSearchByAny(e.target.value)
     }
 
-    const drpSearcByAny=(srchValProp)=>{
-      setSearchByAnyProp(srchValProp)
+    const handleDrpSearcByAny=(e)=>{
+      alert(e.target.value)
+      setSearchByAnyProp('')
     }
 
     const  handleFilter=(e)=>{
@@ -193,8 +194,8 @@ export default function PersonLists() {
 
   
   <div class="dropdown">
-  <select class="custom-select">
-  <option selected>Select Field to Search</option>
+  <select class="custom-select" onChange={handleDrpSearcByAny}>
+  <option value="" selected>Select Field to Search</option>
   <option value="fname">First Name</option>
   <option value="lname">Last Name</option>
   <option value="age">Age</option>
