@@ -73,6 +73,7 @@ export default function PersonLists() {
         if(sortToggle==true){
             if(feildName==='age')
             sortedData= person.sort((a, b) => {
+              
                 if(Number(a[feildName]) < Number(b[feildName])) 
                 return 1
                 else
@@ -88,7 +89,7 @@ export default function PersonLists() {
        if(sortToggle==false){
         if(feildName==='age')
         sortedData= person.sort((a, b) => {
-           if(Number(a[feildName]) < Number(b[feildName])) 
+           if(Number(a[feildName]) > Number(b[feildName])) 
            return 1
            else
            return -1
@@ -153,7 +154,7 @@ export default function PersonLists() {
 
     return (
  <div class="container">
-  <h2 className="">React Table with Full </h2> 
+  <h2 className="">React Table with Full Functionality </h2> 
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Add New Person
   </button>     
