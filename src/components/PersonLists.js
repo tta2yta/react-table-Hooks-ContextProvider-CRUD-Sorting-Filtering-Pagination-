@@ -75,6 +75,23 @@ export default function PersonLists() {
             setPerson(filteredPersons) 
     }
 
+    const handleFilterByAny=()=>{
+      if(searchByAnyProp===''){
+        setPerson(personFinal)
+        return;
+      }
+     else if(searchByAnyProp === 'fname'){
+      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+     }
+     else if(searchByAnyProp === 'lname'){
+      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+     }
+     else if(searchByAnyProp === 'age'){
+      filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
+     }
+
+    }
+
 
     const sortPersonList=(feildName)=>{
         let  sortedData;
