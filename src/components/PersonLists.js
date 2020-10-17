@@ -13,7 +13,7 @@ export default function PersonLists() {
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
     const [searchByAny, setSearchByAny]=useState('')
-    const [searchByAnyProp, setSearchByAnyProp]=useState('')
+    const [searchByAnyProp, setSearchByAnyProp]=useState('fname')
     const [sortToggle, setSortToggle]=useState(true)
     const [sortIcon, setSortIcon]=useState(true)
     const [num, setNum]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
@@ -33,7 +33,7 @@ export default function PersonLists() {
     }
 
     const  handleSearchByName=(e)=>{
-       // alert(e.target.id)
+        
         if(e.target.id=="searchfname")
         setSearchByFName(e.target.value)
         
@@ -42,21 +42,30 @@ export default function PersonLists() {
 
         if(e.target.id=="searchage")
         setSearchByAge(e.target.value)
+
+        if(e.target.id=="srch"){
+          //alert(e.target.value)
+          setSearchByAny(e.target.value)
+        }
+        
         
     }
 
-    const handleSearchByAny =(e)=>{
-        setSearchByAny(e.target.value)
-    }
+    // const handleSearchByAny =(e)=>{
+    //     setSearchByAny(e.target.value)
+    // }
 
     const handleDrpSearcByAny=(e)=>{
-      alert(e.target.value)
-      setSearchByAnyProp('')
+      //alert(e.target.value)
+      setSearchByAnyProp(e.target.value)
     }
 
+      const checkfun=(e)=>{
+      alert(e.target.value)
+      }
+
     const  handleFilter=(e)=>{
-            //alert(e.target.id)
-            console.log(personFinal)
+alert(e.target.value)
             if(e.target.value==""){
                 setPerson(personFinal)
                 return;
@@ -76,22 +85,23 @@ export default function PersonLists() {
             setPerson(filteredPersons) 
     }
 
-    const handleFilterByAny=()=>{
-      let filteredPersons;
-      if(searchByAnyProp==='' && searchByAny===''){
-        setPerson(personFinal)
-        return;
-      }
-     else if(searchByAnyProp === 'fname'){
-      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
-     }
-     else if(searchByAnyProp === 'lname'){
-      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
-     }
-     else if(searchByAnyProp === 'age'){
-      filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
-     }
-     setPerson(filteredPersons)
+    const handleFilterByAny=(e)=>{
+      alert(e.target.value)
+    //   let filteredPersons;
+    //   if( e.target.value===''){
+    //     setPerson(personFinal)
+    //     return;
+    //   }
+    //  else if(searchByAnyProp === 'fname'){
+    //   filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+    //  }
+    //  else if(searchByAnyProp === 'lname'){
+    //   filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+    //  }
+    //  else if(searchByAnyProp === 'age'){
+    //   filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
+    //  }
+    //  setPerson(filteredPersons)
 
     }
 
@@ -167,19 +177,19 @@ export default function PersonLists() {
 
         useEffect(() => {
             
-            document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
+            document.getElementById('srch').addEventListener("keyup", checkfun)
+            document.getElementById('searchfname').addEventListener("keyup", handleFilter)
             document.getElementById('searchlname').addEventListener("keyup", handleFilter)
-            document.getElementById('searchage').addEventListener("keyup", handleFilter)
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
-             document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
-             document.getElementById('srchtxt').removeEventListener("keyup", handleFilter)
+             document.getElementById('srch').addEventListener("keyup", checkfun)
+             document.getElementById('searchfname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchage').removeEventListener("keyup", handleFilter)
                 
             }
-        }, [searchByFName])
+        }, [searchByFName, searchByLName, searchByAge, searchByAny])
 
       
 
@@ -200,7 +210,8 @@ export default function PersonLists() {
   <option value="lname">Last Name</option>
   <option value="age">Age</option>
 </select>
-  <input type="text" id="srchtxt" name="searchfname" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByAny} />
+  <input type="text" id="srchtxt" name="srchtxt" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByName} />
+  <input type="text" id="srch" name="srch" placeholder="Search By First Name" value={searchByAny} onChange={handleSearchByName} />
 </div>
 
   </div>
