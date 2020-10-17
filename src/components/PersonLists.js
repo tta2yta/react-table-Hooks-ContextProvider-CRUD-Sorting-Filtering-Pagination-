@@ -43,7 +43,7 @@ export default function PersonLists() {
         if(e.target.id=="searchage")
         setSearchByAge(e.target.value)
 
-        if(e.target.id=="srch"){
+        if(e.target.id=="srchtxt"){
           //alert(e.target.value)
           setSearchByAny(e.target.value)
         }
@@ -177,19 +177,19 @@ alert(e.target.value)
 
         useEffect(() => {
             
-            document.getElementById('srch').addEventListener("keyup", checkfun)
+            document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
             document.getElementById('searchfname').addEventListener("keyup", handleFilter)
             document.getElementById('searchlname').addEventListener("keyup", handleFilter)
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
-             document.getElementById('srch').addEventListener("keyup", checkfun)
+             document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
              document.getElementById('searchfname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchage').removeEventListener("keyup", handleFilter)
                 
             }
-        }, [searchByFName, searchByLName, searchByAge, searchByAny])
+        }, [searchByFName, searchByLName, searchByAge])
 
       
 
