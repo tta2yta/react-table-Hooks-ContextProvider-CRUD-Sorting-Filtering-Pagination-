@@ -72,26 +72,26 @@ export default function PersonLists() {
                     filteredPersons= personFinal.filter(item=>item.age==e.target.value)
                     break;
             }
-           // setPerson(filteredPersons) 
+           setPerson(filteredPersons) 
     }
 
     const handleFilterByAny=(e)=>{
       console.log(searchByAnyProp)
-    //   let filteredPersons;
-    //   if( e.target.value===''){
-    //     setPerson(personFinal)
-    //     return;
-    //   }
-    //  else if(searchByAnyProp === 'fname'){
-    //   filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
-    //  }
-    //  else if(searchByAnyProp === 'lname'){
-    //   filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
-    //  }
-    //  else if(searchByAnyProp === 'age'){
-    //   filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
-    //  }
-    //  setPerson(filteredPersons)
+      let filteredPersons;
+      if( e.target.value===''){
+        setPerson(personFinal)
+        return;
+      }
+     else if(searchByAnyProp === 'fname'){
+      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+     }
+     else if(searchByAnyProp === 'lname'){
+      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+     }
+     else if(searchByAnyProp === 'age'){
+      filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
+     }
+     setPerson(filteredPersons)
 
     }
 
