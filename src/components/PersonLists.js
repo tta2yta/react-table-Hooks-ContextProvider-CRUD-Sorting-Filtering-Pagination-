@@ -43,8 +43,7 @@ export default function PersonLists() {
         if(e.target.id=="searchage")
         setSearchByAge(e.target.value)
 
-        if(e.target.id=="srchtxt"){
-          //alert(e.target.value)
+        if(e.target.id=="srch"){
           setSearchByAny(e.target.value)
         }
         
@@ -56,16 +55,11 @@ export default function PersonLists() {
     // }
 
     const handleDrpSearcByAny=(e)=>{
-      //alert(e.target.value)
+      console.log(e.target.value)
       setSearchByAnyProp(e.target.value)
     }
 
-      const checkfun=(e)=>{
-      alert(e.target.value)
-      }
-
     const  handleFilter=(e)=>{
-alert(e.target.value)
             if(e.target.value==""){
                 setPerson(personFinal)
                 return;
@@ -82,11 +76,11 @@ alert(e.target.value)
                     filteredPersons= personFinal.filter(item=>item.age==e.target.value)
                     break;
             }
-            setPerson(filteredPersons) 
+           // setPerson(filteredPersons) 
     }
 
     const handleFilterByAny=(e)=>{
-      alert(e.target.value)
+      console.log(searchByAnyProp)
     //   let filteredPersons;
     //   if( e.target.value===''){
     //     setPerson(personFinal)
@@ -177,19 +171,19 @@ alert(e.target.value)
 
         useEffect(() => {
             
-            document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
+            document.getElementById('srch').addEventListener("keyup", handleFilterByAny)
             document.getElementById('searchfname').addEventListener("keyup", handleFilter)
             document.getElementById('searchlname').addEventListener("keyup", handleFilter)
             document.getElementById('searchage').addEventListener("keyup", handleFilter)
             
             return () => {
-             document.getElementById('srchtxt').addEventListener("keyup", handleFilterByAny)
-             document.getElementById('searchfname').removeEventListener("keyup", handleFilter)
+             document.getElementById('srch').removeEventListener("keyup", handleFilterByAny)
+             document.getElementById('searchfname').removeEventListener("keyup", handleFilter )
              document.getElementById('searchlname').removeEventListener("keyup", handleFilter)
              document.getElementById('searchage').removeEventListener("keyup", handleFilter)
                 
             }
-        }, [searchByFName, searchByLName, searchByAge])
+        })
 
       
 
@@ -204,14 +198,13 @@ alert(e.target.value)
 
   
   <div class="dropdown">
-  <select class="custom-select" onChange={handleDrpSearcByAny}>
+  <select class="custom-select" onChange={()=>handleDrpSearcByAny}>
   <option value="" selected>Select Field to Search</option>
   <option value="fname">First Name</option>
   <option value="lname">Last Name</option>
   <option value="age">Age</option>
 </select>
-  <input type="text" id="srchtxt" name="srchtxt" placeholder="Enter a Value" value={searchByAny} onChange={handleSearchByName} />
-  <input type="text" id="srch" name="srch" placeholder="Search By First Name" value={searchByAny} onChange={handleSearchByName} />
+  <input type="text" id="srch" name="srch" placeholder="Enter a Value to Search" value={searchByAny} onChange={handleSearchByName} />
 </div>
 
   </div>
