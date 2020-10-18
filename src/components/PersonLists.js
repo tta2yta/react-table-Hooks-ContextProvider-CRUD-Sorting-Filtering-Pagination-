@@ -45,14 +45,9 @@ export default function PersonLists() {
 
         if(e.target.id=="srch"){
           setSearchByAny(e.target.value)
-        }
-        
-        
+        }    
     }
 
-    // const handleSearchByAny =(e)=>{
-    //     setSearchByAny(e.target.value)
-    // }
 
     const handleDrpSearcByAny=(e)=>{
       console.log(e.target.value)
@@ -60,6 +55,7 @@ export default function PersonLists() {
     }
 
     const  handleFilter=(e)=>{
+      console.log(searchByAnyProp)
             if(e.target.value==""){
                 setPerson(personFinal)
                 return;
@@ -198,7 +194,7 @@ export default function PersonLists() {
 
   
   <div class="dropdown">
-  <select class="custom-select" onChange={()=>handleDrpSearcByAny}>
+  <select class="custom-select" onChange={handleDrpSearcByAny}>
   <option value="" selected>Select Field to Search</option>
   <option value="fname">First Name</option>
   <option value="lname">Last Name</option>
