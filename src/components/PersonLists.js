@@ -13,7 +13,7 @@ export default function PersonLists() {
     const [searchByLName, setSearchByLName]=useState('')
     const [searchByAge, setSearchByAge]=useState(0)
     const [searchByAny, setSearchByAny]=useState('')
-    const [searchByAnyProp, setSearchByAnyProp]=useState('fname')
+    const [searchByAnyProp, setSearchByAnyProp]=useState('')
     const [sortToggle, setSortToggle]=useState(true)
     const [sortIcon, setSortIcon]=useState(true)
     const [num, setNum]=useState(Math.ceil(parseFloat(person.length)/parseFloat(itemsPerPage)))
@@ -78,6 +78,10 @@ export default function PersonLists() {
     }
 
     const handleFilterByAny=(e)=>{
+      if(searchByAnyProp === ''){
+        alert("Please Select a Feild to Search")
+        return
+      }
       console.log(searchByAnyProp)
       let filteredPersons;
       if( e.target.value===''){
