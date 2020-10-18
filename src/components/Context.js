@@ -30,7 +30,11 @@ export const AppContextProvider=(props)=>{
 
         const addNewPerson=(e)=>{
 
-    
+            if(fname==='' || lname==='' | age==='')
+            {
+                alert("Please Enter a Value")
+                return
+            }
 
             if(saveToggle){
                 // const updItemIndex=person.findIndex(item=> item.id==updItem.id)
