@@ -88,10 +88,10 @@ export default function PersonLists() {
       filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
      }
      else if(searchByAnyProp === 'lname'){
-      filteredPersons= personFinal.filter(item=>item.fname.includes(searchByAny))
+      filteredPersons= personFinal.filter(item=>item.lname.includes(searchByAny))
      }
      else if(searchByAnyProp === 'age'){
-      filteredPersons= personFinal.filter(item=>item.fname.includes(Number(searchByAny)))
+      filteredPersons= personFinal.filter(item=>item.age.includes(Number(searchByAny)))
      }
      setPerson(filteredPersons)
 
