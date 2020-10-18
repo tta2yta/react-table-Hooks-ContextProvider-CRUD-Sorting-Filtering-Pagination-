@@ -57,7 +57,9 @@ export default function PersonLists() {
     const  handleFilter=(e)=>{
       console.log(searchByAnyProp)
             if(e.target.value==""){
-                setPerson(personFinal)
+              console.log(itemsPerPage)
+              console.log(person)
+              setPerson(personFinal.slice(0, itemsPerPage))
                 return;
             }
             let filteredPersons;
@@ -79,7 +81,7 @@ export default function PersonLists() {
       console.log(searchByAnyProp)
       let filteredPersons;
       if( e.target.value===''){
-        setPerson(personFinal)
+        setPerson(personFinal.slice(0, itemsPerPage))
         return;
       }
      else if(searchByAnyProp === 'fname'){
