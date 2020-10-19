@@ -192,7 +192,7 @@ export default function PersonLists() {
 
     return (
  <div class="container">
-  <h2 className="">React Table with Full Functionality </h2> 
+  <h2 className="">React Table with Full Functionality with Hooks </h2> 
   <div className="srch-sec">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Add New Person
