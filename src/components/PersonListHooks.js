@@ -1,6 +1,6 @@
 import React from 'react'
-import Pagination from './components/PersonLists';
-import Pagination from './components/Pagination';
+import PersonLists from './PersonLists';
+import Pagination from './Pagination';
 
 export default function PersonListHooks() {
     return (

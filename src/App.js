@@ -1,29 +1,29 @@
 import React from 'react';
-import PersonLists from './components/PersonLists';
+// import PersonLists from './components/PersonLists';
 import {AppContextProvider} from './components/Context'
-import Pagination from './components/Pagination';
+// import Pagination from './components/Pagination';
 import  './App.css'
 import { Router } from 'react-router-dom';
 import PersonListHooks from './components/PersonListHooks';
 import PersonListClasses from './components/PersonListClasses';
+import Home from './components/Home';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <AppContextProvider>
+    {/* <AppContextProvider>
     <PersonLists />
     <Pagination />
-    {/* <PersonListClass /> */}
-    {/* <DemoUseEffect /> */}
-    {/* <Test_1 /> */}
-
-    </AppContextProvider>
-
-    <Switch>
-    <Router exact path="/" component={} />
-    <Router  path="/hooks" component={PersonListHooks} />
-    <Router path="/classes" component={PersonListClasses} />
+    </AppContextProvider> */}
+<AppContextProvider>
+<Switch>
+    <Route exact path="/" component={Home} />
+    <Route  path="/hooks" component={PersonListHooks} />
+    <Route path="/classes" component={PersonListClasses} />
     </Switch>
+</AppContextProvider>
+   
         
     </>
   );
