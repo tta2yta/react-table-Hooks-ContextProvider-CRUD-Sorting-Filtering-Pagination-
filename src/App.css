@@ -24,3 +24,14 @@ h2{
 .custom-select{
   max-width: 250px;
 }
+
+.nav-item{
+  margin-right:20px;
+  background-color: rgb(110, 7, 79);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.main-nav{
+  text-align: center;
+}
