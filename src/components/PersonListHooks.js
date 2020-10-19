@@ -1,6 +1,6 @@
 import React from 'react'
 import PersonListsH from './PersonListsH';
-import Pagination from './Pagination';
+import PaginationH from './PaginationH';
 import NavBar from './NavBar';
 
 export default function PersonListHooks() {
@@ -8,7 +8,7 @@ export default function PersonListHooks() {
         <div>
             <NavBar />
             <PersonListsH />
-            <Pagination />
+            <PaginationH />
         </div>
     )
 }

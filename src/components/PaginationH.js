@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import {AppContext} from './Context'
 
-export default function Pagination() {
+export default function PaginationH() {
 
 
 const [person, setPerson, personFinal, setPersonFinal, fname, setFname,lname, setLname, age, setAge,
