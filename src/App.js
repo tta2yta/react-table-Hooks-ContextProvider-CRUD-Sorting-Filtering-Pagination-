@@ -4,6 +4,8 @@ import {AppContextProvider} from './components/Context'
 import Pagination from './components/Pagination';
 import  './App.css'
 import { Router } from 'react-router-dom';
+import PersonListHooks from './components/PersonListHooks';
+import PersonListClasses from './components/PersonListClasses';
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
 
     <Switch>
     <Router exact path="/" component={} />
-    <Router  path="/hooks" component={} />
-    <Router path="/classes" component={} />
+    <Router  path="/hooks" component={PersonListHooks} />
+    <Router path="/classes" component={PersonListClasses} />
     </Switch>
         
     </>
