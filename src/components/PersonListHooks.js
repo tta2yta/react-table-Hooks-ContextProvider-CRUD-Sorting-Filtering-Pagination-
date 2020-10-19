@@ -1,5 +1,5 @@
 import React from 'react'
-import PersonLists from './PersonLists';
+import PersonListsH from './PersonListsH';
 import Pagination from './Pagination';
 import NavBar from './NavBar';
 
@@ -7,7 +7,7 @@ export default function PersonListHooks() {
     return (
         <div>
             <NavBar />
-            <PersonLists />
+            <PersonListsH />
             <Pagination />
         </div>
     )
