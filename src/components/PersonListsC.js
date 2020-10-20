@@ -30,7 +30,7 @@ export default class PersonListsC extends Component {
             <div>
                   {/* {data.map(({ id, name }) => <span key={id}>{name}</span>)} */}
                 {console.log(this.state.person)}
-                {/* {this.state.person.map((item, key)=> item.map(elem=><li>{elem.fname}</li>))} */}
+        {this.state.person.map((item, key)=> <li>{item.fname}</li>)}
               <AppContextProvideC>
                   <AppContextC.Consumer>
                       {(context)=>{ 
@@ -40,13 +40,11 @@ export default class PersonListsC extends Component {
                           context.person.map((item, key)=>
                           ( 
                             //console.log(item[key].fname)
-                            <ul>
+                            <ul key={key}>
                                 <li>{item.fname}</li>
                             </ul>
-                          )
-                        
-                          
-                          )
+                          ) )
+   
                       }
 
                       }
