@@ -1,6 +1,6 @@
 import React from 'react';
 // import PersonLists from './components/PersonLists';
-import {AppContextProvider} from './components/Context'
+// import {AppContextProvider} from './components/ContextH'
 // import Pagination from './components/Pagination';
 import  './App.css'
 import { Router } from 'react-router-dom';
@@ -16,13 +16,13 @@ function App() {
     <PersonLists />
     <Pagination />
     </AppContextProvider> */}
-<AppContextProvider>
+{/* <AppContextProvider> */}
 <Switch>
     <Route exact path="/" component={Home} />
     <Route  path="/hooks" component={PersonListHooks} />
     <Route path="/classes" component={PersonListClasses} />
     </Switch>
-</AppContextProvider>
+{/* </AppContextProvider> */}
    
         
     </>
