@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AppContextProvideC, { AppContextC } from './ContextC'
+import PersonListTbl from './PersonListTbl';
 
 
 const initialPerson=[
@@ -12,6 +13,8 @@ const initialPerson=[
 const data = [{"id": "01", "name": "Hi"}, {"id": "02", "name": "Hello"}];
 
 export default class PersonListsC extends Component {
+
+     static contextType=AppContextC
     constructor(props) {
         super(props);
         this.state = { 
@@ -25,32 +28,32 @@ export default class PersonListsC extends Component {
 
     
     render() {
+         
+//const{person, fname, lname, age}=this.context
 
-        return (
-            <div>
-                  {/* {data.map(({ id, name }) => <span key={id}>{name}</span>)} */}
-                {console.log(this.state.person)}
-        {this.state.person.map((item, key)=> <li>{item.fname}</li>)}
-              <AppContextProvideC>
+
+        return ( 
+            <div className="kkkk">
+                <PersonListTbl personlist={this.context.person} />
+        {/* {this.state.person.map((item, key)=> <li>{item.fname}</li>)} */}
+              {/* <AppContextProvideC>
                   <AppContextC.Consumer>
-                      {(context)=>{ 
+                  
+                      {(context)=>{
 
-                            console.log(context.person)
+                                let personss=context.person
 
-                          context.person.map((item, key)=>
-                          ( 
-                            //console.log(item[key].fname)
-                            <ul key={key}>
-                                <li>{item.fname}</li>
-                            </ul>
-                          ) )
-   
+                                console.log(personss)
+                                personss.map((item, key)=>
+                          
+                                <li key={key}>kkk</li> )
                       }
-
                       }
+                     
+                  
                   </AppContextC.Consumer>
-              </AppContextProvideC>
-                
+              </AppContextProvideC> */}
+            
             </div>
         )
     }

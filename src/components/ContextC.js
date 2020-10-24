@@ -24,7 +24,7 @@ class AppContextProvideC extends Component {
     }
     render() {
         return (
-            <AppContextC.Provider value={{person:this.state.person}}>
+            <AppContextC.Provider value={{...this.state}}>
                 
                 {this.props.children}
             </AppContextC.Provider>
