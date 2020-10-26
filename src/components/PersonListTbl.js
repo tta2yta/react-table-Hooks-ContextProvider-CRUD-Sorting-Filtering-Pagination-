@@ -35,9 +35,9 @@ export default function PersonListTbl(props) {
             )
         }
       <tr>
-        <td> <input type="text" name="fname" placeholder="Enter First Name" value={props.personlist.fname} onChange={props.personlist.handleFirstNameC} /></td>
-        <td><input type="text" name="lname" placeholder="Enter Last Name" value={props.personlist.handleLastNameC} onChange="" /></td>
-        <td><input type="text" name="age" placeholder="Enter Age" value="" onChange="" /></td>
+        <td> <input type="text" name="fname" placeholder="Enter First Name" value={props.personlist.state.fname} onChange={props.personlist.handleFirstNameC} /></td>
+        <td><input type="text" name="lname" placeholder="Enter Last Name" value={props.personlist.state.lname} onChange={props.personlist.handleLastNameC} /></td>
+        <td><input type="text" name="age" placeholder="Enter Age" value={props.personlist.state.age} onChange={props.personlist.handleAgeC} /></td>
         <td><input type="button" class="btn btn-primary" id="add" value="Add Person" onClick={props.personlist.addFun} /></td> 
         <td><input type="button" class="btn btn-danger" value="Cancel Update" onClick="" disabled="" /></td> 
       </tr>

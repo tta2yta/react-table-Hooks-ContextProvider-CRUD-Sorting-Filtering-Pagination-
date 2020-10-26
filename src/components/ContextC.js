@@ -25,12 +25,13 @@ class AppContextProvideC extends Component {
     }
 
     handleFirstNameC=(e)=>{
+    
         this.setState({fname: e.target.value})
     }
-    handleLastnameC=(e)=>{
+    handleLastNameC=(e)=>{
         this.setState({lname:e.target.value})
     }
-    handleFirstAgeC=(e)=>{
+    handleAgeC=(e)=>{
         this.setState({age:e.target.value})
     }
 
@@ -43,7 +44,8 @@ class AppContextProvideC extends Component {
 
     render() {
         return (
-            <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass }}>
+            <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
+            handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC }}>
                 
                 {this.props.children} 
             </AppContextC.Provider>
