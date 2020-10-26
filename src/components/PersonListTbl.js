@@ -26,7 +26,7 @@ export default function PersonListTbl(props) {
                         <td id="fname">{item.fname}</td>
                         <td id="lname">{item.lname}</td>
                         <td id="age">{item.age}</td>
-                        <td><button type="button" class="btn btn-warning"  onClick={props.personlist.handleEditPersonC} >Edit</button></td> 
+                        <td><button type="button" class="btn btn-warning"  onClick={props.personlist.editPersonListClass(item)} >Edit</button></td> 
                         <td><input type="button" class="btn btn-danger" value="Delete" onClick="" /></td> 
                     
                     </tr>
@@ -38,7 +38,7 @@ export default function PersonListTbl(props) {
         <td> <input type="text" name="fname" placeholder="Enter First Name" value={props.personlist.state.fname} onChange={props.personlist.handleFirstNameC} /></td>
         <td><input type="text" name="lname" placeholder="Enter Last Name" value={props.personlist.state.lname} onChange={props.personlist.handleLastNameC} /></td>
         <td><input type="text" name="age" placeholder="Enter Age" value={props.personlist.state.age} onChange={props.personlist.handleAgeC} /></td>
-        <td><input type="button" class="btn btn-primary" id="add" value={props.personlist.saveEditTiggle?"Add Person":"Update Person"} onClick={props.personlist.addFun} /></td> 
+        <td><input type="button" class="btn btn-primary" id="add" value={props.personlist.state.saveEditToggle?"Add Person":"Update Person"} onClick={props.personlist.addFun} /></td> 
         <td><input type="button" class="btn btn-danger" value="Cancel Update" onClick="" disabled="" /></td> 
       </tr>
     </tbody>

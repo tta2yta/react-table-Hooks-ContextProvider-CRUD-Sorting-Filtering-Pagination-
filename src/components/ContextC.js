@@ -44,11 +44,14 @@ class AppContextProvideC extends Component {
             this.setState({person: [...this.state.person, newPerson]})
         }
         else{
-            
+
         }
       
     }
     editPersonListClass=(personEdited)=>{
+        this.setState({fname:personEdited.fname})
+        this.setState({lname:personEdited.lname})
+        this.setState({age:personEdited.age})
         this.setState({saveEditToggle:false})
 
     }
@@ -56,7 +59,7 @@ class AppContextProvideC extends Component {
     render() {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
-            handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC }}>
+            handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass }}>
                 
                 {this.props.children} 
             </AppContextC.Provider>
