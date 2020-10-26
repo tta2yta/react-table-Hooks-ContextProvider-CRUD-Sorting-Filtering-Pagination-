@@ -44,7 +44,9 @@ class AppContextProvideC extends Component {
             this.setState({person: [...this.state.person, newPerson]})
         }
         else{
-
+           let tempPerson=this.state.person.map(item=> item.id===this.state.id ? {...item, ...this.state.fname,
+        ...this.state.lname, ...this.state.age}:item)
+        this.setState({person:tempPerson})
         }
       
     }
@@ -58,6 +60,9 @@ class AppContextProvideC extends Component {
 
     cancelUpdate=()=>{
         this.setState({saveEditToggle:true})
+        this.setState({fname:""})
+        this.setState({lname:""})
+        this.setState({age:""})
     }   
 
     render() {
