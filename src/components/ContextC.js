@@ -38,14 +38,15 @@ class AppContextProvideC extends Component {
 
     addPersonListClass=()=>{
 
-        if(!this.state.saveEditToggle){
+        if(this.state.saveEditToggle){
             const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
                 lname:this.state.lname, age:this.state.age}
             this.setState({person: [...this.state.person, newPerson]})
         }
         else{
-           let tempPerson=this.state.person.map(item=> item.id===this.state.id ? {...item, ...this.state.fname,
-        ...this.state.lname, ...this.state.age}:item)
+            alert(this.state.id)
+           let tempPerson=this.state.person.map(item=> item.id===this.state.id ? {...item, fname:this.state.fname,
+        lname:this.state.lname, age:this.state.age}:item)
         this.setState({person:tempPerson})
         }
       
@@ -54,6 +55,7 @@ class AppContextProvideC extends Component {
         this.setState({fname:personEdited.fname})
         this.setState({lname:personEdited.lname})
         this.setState({age:personEdited.age})
+        this.setState({id:personEdited.id})
         this.setState({saveEditToggle:false})
 
     }
