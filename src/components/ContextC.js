@@ -57,13 +57,14 @@ class AppContextProvideC extends Component {
     }
 
     cancelUpdate=()=>{
-        this.setState({saveEditToggle:false})
+        this.setState({saveEditToggle:true})
     }   
 
     render() {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
-            handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass }}>
+            handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
+            cancelUpdate:this.cancelUpdate }}>
                 
                 {this.props.children} 
             </AppContextC.Provider>
