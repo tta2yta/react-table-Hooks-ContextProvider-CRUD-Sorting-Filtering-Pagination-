@@ -3,7 +3,7 @@ import React from 'react'
 export default function PersonListTbl(props) {
     return (
         <div>
-          {console.log(props.personlist)}
+          {console.log(props)}
           <table class="table table-dark table-striped">
     <thead>
       <tr>
@@ -19,7 +19,7 @@ export default function PersonListTbl(props) {
         <td><input type="text" id="searchlname" name="searchlname" placeholder="Search By Last Name" value="" onChange="" /></td>
         <td><input type="text" id="searchage" name="searchage" placeholder="Search By Age" value="" onChange="" /></td>
       </tr>
-      {props.personlist.map((item, key)=>
+      {props.personlist.state.person.map((item, key)=>
             (  
                
                     <tr key={key}>
@@ -38,7 +38,7 @@ export default function PersonListTbl(props) {
         <td> <input type="text" name="fname" placeholder="Enter First Name" value="" onChange="" /></td>
         <td><input type="text" name="lname" placeholder="Enter Last Name" value="" onChange="" /></td>
         <td><input type="text" name="age" placeholder="Enter Age" value="" onChange="" /></td>
-        <td><input type="button" class="btn btn-primary" id="add" value="" onClick="" /></td> 
+        <td><input type="button" class="btn btn-primary" id="add" value="Add Person" onClick={props.personlist.addFun} /></td> 
         <td><input type="button" class="btn btn-danger" value="Cancel Update" onClick="" disabled="" /></td> 
       </tr>
     </tbody>

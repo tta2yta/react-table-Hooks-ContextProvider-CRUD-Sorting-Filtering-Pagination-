@@ -22,11 +22,17 @@ class AppContextProvideC extends Component {
             age:0
          };
     }
+
+ addPersonListClass=()=>{
+     alert("Table Will be Empty")
+this.setState({person:[]})
+}
+
     render() {
         return (
-            <AppContextC.Provider value={{...this.state}}>
+            <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass }}>
                 
-                {this.props.children}
+                {this.props.children} 
             </AppContextC.Provider>
             
         );

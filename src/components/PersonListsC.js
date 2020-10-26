@@ -34,7 +34,8 @@ export default class PersonListsC extends Component {
 
         return ( 
             <div className="kkkk">
-                <PersonListTbl personlist={this.context.person} />
+                {console.log(this.context)}
+                <PersonListTbl personlist={this.context} />
         {/* {this.state.person.map((item, key)=> <li>{item.fname}</li>)} */}
               {/* <AppContextProvideC>
                   <AppContextC.Consumer>
