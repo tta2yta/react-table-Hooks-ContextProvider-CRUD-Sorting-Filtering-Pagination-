@@ -60,6 +60,11 @@ class AppContextProvideC extends Component {
 
     }
 
+deletePerson=(delItem)=>{
+    let tempPerson=this.state.person.filter(item=> item !== delItem)
+    this.setState({person:tempPerson})
+}
+
     cancelUpdate=()=>{
         this.setState({saveEditToggle:true})
         this.setState({fname:""})
@@ -71,7 +76,7 @@ class AppContextProvideC extends Component {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
-            cancelUpdate:this.cancelUpdate }}>
+            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson }}>
                 
                 {this.props.children} 
             </AppContextC.Provider>

@@ -27,7 +27,7 @@ export default function PersonListTbl(props) {
                         <td id="lname">{item.lname}</td>
                         <td id="age">{item.age}</td>
                         <td><button type="button" class="btn btn-warning"  onClick={()=>props.personlist.editPersonListClass(item)} >Edit</button></td> 
-                        <td><input type="button" class="btn btn-danger" value="Delete" onClick="" /></td> 
+                        <td><input type="button" class="btn btn-danger" value="Delete" onClick={()=>deletePerson(item)} /></td> 
                     
                     </tr>
 
