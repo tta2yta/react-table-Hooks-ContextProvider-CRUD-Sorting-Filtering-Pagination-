@@ -17,16 +17,29 @@ class AppContextProvideC extends Component {
         super(props);
         this.state = { 
             person:initialPerson,
+            id:0,
             fname:'',
             lname:'',
             age:0
          };
     }
 
- addPersonListClass=()=>{
-     alert("Table Will be Empty")
-this.setState({person:[]})
-}
+    handleFirstNameC=(e)=>{
+        this.setState({fname: e.target.value})
+    }
+    handleLastnameC=(e)=>{
+        this.setState({lname:e.target.value})
+    }
+    handleFirstAgeC=(e)=>{
+        this.setState({age:e.target.value})
+    }
+
+    addPersonListClass=()=>{
+
+        const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
+            lname:this.state.lname, age:this.state.age}
+        this.setState({person: [...this.state.person, newPerson]})
+    }
 
     render() {
         return (
