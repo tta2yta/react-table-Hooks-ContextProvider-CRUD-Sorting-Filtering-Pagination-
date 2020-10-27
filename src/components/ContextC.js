@@ -12,6 +12,7 @@ const initialPerson=[
     {id:3, fname:'bbaac', lname:'ff', age:20}                 
 ]
 
+
 class AppContextProvideC extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,8 @@ class AppContextProvideC extends Component {
             fname:'',
             lname:'',
             age:0,
-            saveEditToggle:true
+            saveEditToggle:true,
+            filterToggle:true
          };
     }
 
@@ -65,12 +67,16 @@ class AppContextProvideC extends Component {
         this.setState({person:tempPerson})
     }
 
+
+
     cancelUpdate=()=>{
         this.setState({saveEditToggle:true})
         this.setState({fname:""})
         this.setState({lname:""})
         this.setState({age:""})
     }   
+
+
 
     handelFilter=(e)=>{
         if(e.target.value===''){
@@ -79,9 +85,7 @@ class AppContextProvideC extends Component {
         }
         let filteredPerson=""
         if(e.target.id ==='searchfname'){
-             filteredPerson=this.state.person.filter(item=>item.fname.includes(e.target.value))
-            
-            
+             filteredPerson=this.state.person.filter(item=>item.fname.includes(e.target.value))    
         }
         else if(e.target.id==='searchlname'){
              filteredPerson=this.state.person.filter(item=>item.lname.includes(e.target.value))
