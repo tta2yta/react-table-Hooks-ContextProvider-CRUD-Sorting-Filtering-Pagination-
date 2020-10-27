@@ -18,13 +18,11 @@ export default class PersonListsC extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            person:initialPerson,
-            fname:'',
-            lname:'',
-            age:0
+        
          };
        
     }
+
 
     
     render() {

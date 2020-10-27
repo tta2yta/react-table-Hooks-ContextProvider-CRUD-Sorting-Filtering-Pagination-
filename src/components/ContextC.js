@@ -9,7 +9,7 @@ const initialPerson=[
     {id:1, fname:'aaa', lname:'BBB', age:30},
     {id:2, fname:'CCC', lname:'DDD', age:30},
     {id:3, fname:'EEE', lname:'Tesfay', age:30},
-    {id:3, fname:'bb', lname:'ff', age:20}                 
+    {id:3, fname:'bbaac', lname:'ff', age:20}                 
 ]
 
 class AppContextProvideC extends Component {
@@ -60,10 +60,10 @@ class AppContextProvideC extends Component {
 
     }
 
-deletePerson=(delItem)=>{
-    let tempPerson=this.state.person.filter(item=> item !== delItem)
-    this.setState({person:tempPerson})
-}
+    deletePerson=(delItem)=>{
+        let tempPerson=this.state.person.filter(item=> item !== delItem)
+        this.setState({person:tempPerson})
+    }
 
     cancelUpdate=()=>{
         this.setState({saveEditToggle:true})
@@ -72,11 +72,36 @@ deletePerson=(delItem)=>{
         this.setState({age:""})
     }   
 
+    handelFilter=(e)=>{
+        if(e.target.value===''){
+            this.setState({person:initialPerson})
+            return;
+        }
+        let filteredPerson=""
+        if(e.target.id ==='searchfname'){
+             filteredPerson=this.state.person.filter(item=>item.fname.includes(e.target.value))
+            
+            
+        }
+        else if(e.target.id==='searchlname'){
+             filteredPerson=this.state.person.filter(item=>item.lname.includes(e.target.value))
+             console.log(e.target.value)
+             console.log(filteredPerson)
+        }
+        else if(e.target.id==='searchage'){
+            filteredPerson=this.state.person.filter(item=>item.age==e.target.value)
+        }
+        this.setState({person:filteredPerson})
+        console.log(this.state.person)
+        
+      }
+
+
     render() {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
-            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson }}>
+            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter }}>
                 
                 {this.props.children} 
             </AppContextC.Provider>
