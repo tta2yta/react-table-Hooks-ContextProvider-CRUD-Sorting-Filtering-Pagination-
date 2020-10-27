@@ -23,7 +23,8 @@ class AppContextProvideC extends Component {
             lname:'',
             age:0,
             saveEditToggle:true,
-            filterToggle:true
+            filterToggle:true,
+            filteredPersonList:[]
          };
     }
 
@@ -79,10 +80,13 @@ class AppContextProvideC extends Component {
 
 
     handelFilter=(e)=>{
+        
         if(e.target.value===''){
             this.setState({person:initialPerson})
+            this.setState({filterToggle:true})
             return;
         }
+        this.setState({filterToggle:false})
         let filteredPerson=""
         if(e.target.id ==='searchfname'){
              filteredPerson=this.state.person.filter(item=>item.fname.includes(e.target.value))    
@@ -95,7 +99,7 @@ class AppContextProvideC extends Component {
         else if(e.target.id==='searchage'){
             filteredPerson=this.state.person.filter(item=>item.age==e.target.value)
         }
-        this.setState({person:filteredPerson})
+        this.setState({filteredPersonList:filteredPerson})
         console.log(this.state.person)
         
       }

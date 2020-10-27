@@ -47,6 +47,10 @@ componentWillUnmount(){
 
 
 render(){
+const personListResult=[]
+if(this.props.personlist.state.filterToggle)
+personListResult=this.props.personlist.state.person
+
     return (
         <div>
           {console.log(this.props)}
@@ -65,7 +69,10 @@ render(){
         <td><input type="text" id="searchlname" name="searchlname" placeholder="Search By Last Name" value={this.state.searchByLname} onChange={this.handelSearch} /></td>
         <td><input type="text" id="searchage" name="searchage" placeholder="Search By Age" value={this.searchByAge} onChange={this.handelSearch}/></td>
       </tr>
-      {this.props.personlist.state.person.map((item, key)=>
+      {{ if (this.props.personlist.state.filterToggle) {
+
+      }
+      this.props.personlist.state.person.map((item, key)=>
             (  
                
                     <tr key={key}>
