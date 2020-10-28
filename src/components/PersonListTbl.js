@@ -24,12 +24,12 @@ handelSearch=(e)=>{
 }
 
 sortPersonList=(fieldName)=>{
-  let sortedData=""
+  let sortedDataPerson=""
   this.setState({sortToggle:!this.state.sortToggle})
   this.setState({sortIcon:!this.state.sortIcon})
   if(this.state.sortToggle===true){
     if(fieldName==='age'){
-      sortedData=this.props.personlist.state.person.sort((a,b)=>{
+      sortedDataPerson=this.props.personlist.state.person.sort((a,b)=>{
         if(a[fieldName] < b[fieldName])
         return 1
         else
@@ -39,7 +39,22 @@ sortPersonList=(fieldName)=>{
       })
     }
     else
-    sortedData=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() > b[fieldName].toUpperCase() ? 1 : -1)
+    sortedDataPerson=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() < b[fieldName].toUpperCase() ? 1 : -1)
+  }
+  else if(this.state.sortToggle===false){
+    if(fieldName==='age'){
+      sortedDataPerson=this.props.personlist.state.person.sort((a,b)=>{
+        if(a[fieldName] > b[fieldName])
+        return 1
+        else
+        return -1
+
+        return 0;
+      })
+
+    }
+    else
+    sortedDataPerson=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() > b[fieldName].toUpperCase() ? 1 : -1)
   }
 }
 
@@ -81,9 +96,9 @@ personListResult=this.props.personlist.state.filteredPersonList
           <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th><button type="button" class="btn btn-primary" onClick={this.sortPersonList('fname')}><i class={`fa fa-sort-${this.state.sortIcon? 'asc' : 'desc'}`}></i>Fname</button></th>
-        <th><button type="button" class="btn btn-primary" onClick={this.sortPersonList('lname')} ><i class={`fa fa-sort-${this.state.sortIcon? 'asc' : 'desc'}`}></i>Lname</button></th>
-        <th><button type="button" class="btn btn-primary" onClick={this.sortPersonList('age')}><i class={`fa fa-sort-${this.state.sortIcon? 'asc' : 'desc'}`}></i>Age</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={()=>this.sortPersonList('fname')}><i class={`fa fa-sort-${this.state.sortIcon? 'asc' : 'desc'}`}></i>Fname</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={()=>this.sortPersonList('lname')} ><i class={`fa fa-sort-${this.state.sortIcon? 'asc' : 'desc'}`}></i>Lname</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={()=>this.sortPersonList('age')}><i class={`fa fa-sort-${this.state.sortIcon? 'asc' : 'desc'}`}></i>Age</button></th>
       </tr>
     </thead>
     <tbody>
