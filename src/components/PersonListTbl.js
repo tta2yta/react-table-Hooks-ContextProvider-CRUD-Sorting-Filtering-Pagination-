@@ -7,7 +7,9 @@ export default class PersonListTbl extends Component {
     this.state = { 
     searchByFname:'',
     searchByLname:'',
-    searchByAge:0
+    searchByAge:0,
+    sortIcon:true,
+    sortToggle:true
      };
    
 }
@@ -19,6 +21,10 @@ handelSearch=(e)=>{
   this.setState({searchByLname:e.target.value})
   else if(e.target.id==='searchage')
   this.setState({searchByAge:e.target.value})
+}
+
+sortPersonList=()=>{
+  
 }
 
 
