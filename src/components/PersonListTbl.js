@@ -24,7 +24,7 @@ handelSearch=(e)=>{
 }
 
 sortPersonList=(fieldName)=>{
-  let sortedDataPerson=""
+  let sortedDataPerson="", soretedFilteredDataPerson=""
   this.setState({sortToggle:!this.state.sortToggle})
   this.setState({sortIcon:!this.state.sortIcon})
   if(this.state.sortToggle===true){
@@ -38,8 +38,11 @@ sortPersonList=(fieldName)=>{
         return 0;
       })
     }
-    else
-    sortedDataPerson=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() < b[fieldName].toUpperCase() ? 1 : -1)
+    else{
+      sortedDataPerson=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() < b[fieldName].toUpperCase() ? 1 : -1)
+      soretedFilteredDataPerson=this.props.personlist.state.filteredPersonList.sort((a,b)=> a[fieldName].toUpperCase() < b[fieldName].toUpperCase() ? 1 : -1)
+    }
+    
   }
   else if(this.state.sortToggle===false){
     if(fieldName==='age'){
@@ -54,7 +57,12 @@ sortPersonList=(fieldName)=>{
 
     }
     else
-    sortedDataPerson=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() > b[fieldName].toUpperCase() ? 1 : -1)
+    {
+      sortedDataPerson=this.props.personlist.state.person.sort((a,b)=> a[fieldName].toUpperCase() > b[fieldName].toUpperCase() ? 1 : -1)
+      soretedFilteredDataPerson=this.props.personlist.state.filteredPersonList.sort((a,b)=> a[fieldName].toUpperCase() > b[fieldName].toUpperCase() ? 1 : -1)
+    }
+    
+    
   }
 }
 
