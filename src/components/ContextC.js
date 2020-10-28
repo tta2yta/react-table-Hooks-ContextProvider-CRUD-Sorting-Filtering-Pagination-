@@ -12,6 +12,7 @@ const initialPerson=[
     {id:3, fname:'bbaac', lname:'ff', age:20}                 
 ]
 
+
 class AppContextProvideC extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,9 @@ class AppContextProvideC extends Component {
             fname:'',
             lname:'',
             age:0,
-            saveEditToggle:true
+            saveEditToggle:true,
+            filterToggle:true,
+            filteredPersonList:[]
          };
     }
 
@@ -37,14 +40,18 @@ class AppContextProvideC extends Component {
     }
 
     addPersonListClass=()=>{
+        
 
         if(this.state.saveEditToggle){
             const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
                 lname:this.state.lname, age:this.state.age}
             this.setState({person: [...this.state.person, newPerson]})
+            if(this.state.filterToggle===false)
+            this.setState({filteredPersonList:[...this.state.filteredPersonList, newPerson]})
+            console.log(this.state.person)
         }
         else{
-            alert(this.state.id)
+            //alert(this.state.id)
            let tempPerson=this.state.person.map(item=> item.id===this.state.id ? {...item, fname:this.state.fname,
         lname:this.state.lname, age:this.state.age}:item)
         this.setState({person:tempPerson})
@@ -65,6 +72,8 @@ class AppContextProvideC extends Component {
         this.setState({person:tempPerson})
     }
 
+
+
     cancelUpdate=()=>{
         this.setState({saveEditToggle:true})
         this.setState({fname:""})
@@ -72,16 +81,19 @@ class AppContextProvideC extends Component {
         this.setState({age:""})
     }   
 
+
+
     handelFilter=(e)=>{
+        
         if(e.target.value===''){
-            this.setState({person:initialPerson})
+            this.setState({person:this.state.person})
+            this.setState({filterToggle:true})
             return;
         }
+        this.setState({filterToggle:false})
         let filteredPerson=""
         if(e.target.id ==='searchfname'){
-             filteredPerson=this.state.person.filter(item=>item.fname.includes(e.target.value))
-            
-            
+             filteredPerson=this.state.person.filter(item=>item.fname.includes(e.target.value))    
         }
         else if(e.target.id==='searchlname'){
              filteredPerson=this.state.person.filter(item=>item.lname.includes(e.target.value))
@@ -91,7 +103,7 @@ class AppContextProvideC extends Component {
         else if(e.target.id==='searchage'){
             filteredPerson=this.state.person.filter(item=>item.age==e.target.value)
         }
-        this.setState({person:filteredPerson})
+        this.setState({filteredPersonList:filteredPerson})
         console.log(this.state.person)
         
       }
