@@ -38,6 +38,8 @@ sortPersonList=(fieldName)=>{
         return 0;
       })
     }
+    else
+    sortedData=this.state.person.sort((a,b)=> a[fieldName].toUpperCase() > b[fieldName].toUpperCase() ? 1 : -1)
   }
 }
 
@@ -79,9 +81,9 @@ personListResult=this.props.personlist.state.filteredPersonList
           <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th><button type="button" class="btn btn-primary" >Fname</button></th>
-        <th><button type="button" class="btn btn-primary" >Lname</button></th>
-        <th><button type="button" class="btn btn-primary" >Age</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={this.sortPersonList('fname')}>Fname</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={this.sortPersonList('lname')} >Lname</button></th>
+        <th><button type="button" class="btn btn-primary" onClick={this.sortPersonList('age')}>Age</button></th>
       </tr>
     </thead>
     <tbody>
