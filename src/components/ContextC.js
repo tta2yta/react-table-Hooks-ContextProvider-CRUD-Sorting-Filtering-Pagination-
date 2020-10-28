@@ -40,14 +40,18 @@ class AppContextProvideC extends Component {
     }
 
     addPersonListClass=()=>{
+        
 
         if(this.state.saveEditToggle){
             const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
                 lname:this.state.lname, age:this.state.age}
             this.setState({person: [...this.state.person, newPerson]})
+            if(this.state.filterToggle===false)
+            this.setState({filteredPersonList:[...this.state.filteredPersonList, newPerson]})
+            console.log(this.state.person)
         }
         else{
-            alert(this.state.id)
+            //alert(this.state.id)
            let tempPerson=this.state.person.map(item=> item.id===this.state.id ? {...item, fname:this.state.fname,
         lname:this.state.lname, age:this.state.age}:item)
         this.setState({person:tempPerson})
@@ -82,7 +86,7 @@ class AppContextProvideC extends Component {
     handelFilter=(e)=>{
         
         if(e.target.value===''){
-            this.setState({person:initialPerson})
+            this.setState({person:this.state.person})
             this.setState({filterToggle:true})
             return;
         }

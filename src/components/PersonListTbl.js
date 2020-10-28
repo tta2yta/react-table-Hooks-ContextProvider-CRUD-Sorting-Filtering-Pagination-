@@ -55,7 +55,7 @@ personListResult=this.props.personlist.state.filteredPersonList
 
     return (
         <div>
-          {console.log(this.props)}
+          {console.log(this.props.personlist.state.person)}
           <table class="table table-dark table-striped">
     <thead>
       <tr>
