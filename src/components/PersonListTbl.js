@@ -24,6 +24,8 @@ handelSearch=(e)=>{
 }
 
 sortPersonList=()=>{
+  this.setState({sortToggle:!this.state.sortToggle})
+  this.setState({sortIcon:!this.state.sortIcon})
   
 }
 
