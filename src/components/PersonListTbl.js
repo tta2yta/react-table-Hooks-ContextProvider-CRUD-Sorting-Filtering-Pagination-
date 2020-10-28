@@ -23,10 +23,22 @@ handelSearch=(e)=>{
   this.setState({searchByAge:e.target.value})
 }
 
-sortPersonList=()=>{
+sortPersonList=(fieldName)=>{
+  let sortedData=""
   this.setState({sortToggle:!this.state.sortToggle})
   this.setState({sortIcon:!this.state.sortIcon})
-  
+  if(this.state.sortToggle===true){
+    if(fieldName==='age'){
+      sortedData=this.state.person.sort((a,b)=>{
+        if(a[fieldName] < b[fieldName])
+        return 1
+        else
+        return -1
+
+        return 0;
+      })
+    }
+  }
 }
 
 
