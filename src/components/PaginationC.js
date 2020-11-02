@@ -22,7 +22,7 @@ export default class PaginationC extends Component {
             </button>
             <button  value="Prev" width="30px" height="10px" onClick={()=>personState.prevBtnHandler()} ><i class="fa fa-step-backward" ></i></button>
             <input type="button" onClick="" />
-            <button  value="Next" >
+            <button  value="Next" onClick={()=>personState.nextBtnHandler()} >
             <i class="fa fa-step-forward"></i>
             </button>
             <button  value="Last" onClick={()=>personState.handleCurrentPage(personState.state.numPages -1)} >
