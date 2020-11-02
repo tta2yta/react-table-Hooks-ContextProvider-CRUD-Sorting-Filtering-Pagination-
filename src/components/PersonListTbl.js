@@ -92,11 +92,12 @@ componentWillUnmount(){
 
 
 render(){
+  const personState=this.props.personlist.state
 let personListResult=[]
 if(this.props.personlist.state.filterToggle===true)
-personListResult=this.props.personlist.state.person
+personListResult=this.props.personlist.state.person.slice(personState.currentPage, personState.currentPage + personState.itemsPerPage)
 else
-personListResult=this.props.personlist.state.filteredPersonList
+personListResult=this.props.personlist.state.filteredPersonList.slice(personState.currentPage, personState.currentPage + personState.itemsPerPage)
 
     return (
         <div>

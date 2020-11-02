@@ -12,7 +12,7 @@ export default class PaginationC extends Component {
         return (
             <div className="pagination">
             <p>
-            <button  value="First" onClick={this.setState({currentPage:0})}  >
+            <button  value="First" onClick={()=>this.setState({currentPage:0})}  >
             <i class="fa fa-fast-backward"></i>
             </button>
             <button  value="Prev" width="30px" height="10px" ><i class="fa fa-step-backward"></i></button>

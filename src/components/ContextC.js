@@ -24,7 +24,10 @@ class AppContextProvideC extends Component {
             age:0,
             saveEditToggle:true,
             filterToggle:true,
-            filteredPersonList:[]
+            filteredPersonList:[],
+            numPages:0,
+            itemsPerPage:3,
+            currentPage:0
          };
     }
 
@@ -113,7 +116,7 @@ class AppContextProvideC extends Component {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
-            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter }}>
+            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter}}>
                 
                 {this.props.children} 
             </AppContextC.Provider>
