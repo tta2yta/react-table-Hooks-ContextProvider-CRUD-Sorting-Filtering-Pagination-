@@ -9,7 +9,7 @@ const initialPerson=[
     {id:1, fname:'aaa', lname:'BBB', age:30},
     {id:2, fname:'CCC', lname:'DDD', age:30},
     {id:3, fname:'EEE', lname:'Tesfay', age:30},
-    {id:3, fname:'bbaac', lname:'ff', age:20}                 
+    {id:4, fname:'bbaac', lname:'ff', age:20}                 
 ]
 
 
@@ -24,7 +24,13 @@ class AppContextProvideC extends Component {
             age:0,
             saveEditToggle:true,
             filterToggle:true,
-            filteredPersonList:[]
+            filteredPersonList:[],
+            numPages:0,
+            itemsPerPage:3,
+            currentPage:0,
+            prevCurrentPageSate:0,
+            prevBtnFlag:true,
+            nextBtnFlag:false
          };
     }
 
@@ -40,15 +46,20 @@ class AppContextProvideC extends Component {
     }
 
     addPersonListClass=()=>{
-        
 
+        if(this.state.fname==='' || this.state.lname==='' || this.state.age===''){
+            alert("Please Enter a Value in the Field ")
+            return;
+        }
         if(this.state.saveEditToggle){
             const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
                 lname:this.state.lname, age:this.state.age}
-            this.setState({person: [...this.state.person, newPerson]})
+            this.setState({person: [newPerson, ...this.state.person]})
             if(this.state.filterToggle===false)
             this.setState({filteredPersonList:[...this.state.filteredPersonList, newPerson]})
             console.log(this.state.person)
+            let numPages=(Math.ceil(parseFloat(this.state.person.length)/parseFloat(this.state.itemsPerPage)))
+            this.handleNumPages(numPages)
         }
         else{
             //alert(this.state.id)
@@ -70,6 +81,8 @@ class AppContextProvideC extends Component {
     deletePerson=(delItem)=>{
         let tempPerson=this.state.person.filter(item=> item !== delItem)
         this.setState({person:tempPerson})
+        let numPages=(Math.ceil(parseFloat(this.state.person.length)/parseFloat(this.state.temsPerPage)))
+        this.props.personlist.handleNumPages(numPages)
     }
 
 
@@ -108,12 +121,60 @@ class AppContextProvideC extends Component {
         
       }
 
+      handleCurrentPage=(param1)=>{
+          
+          console.log(this.state.person)
+          //this.setState({person:this.state.person.slice(3, this.state.currentPage + this.state.itemsPerPage)})
+          this.setState({prevCurrentPageSate:this.state.prevCurrentPageSate})
+          this.setState({currentPage:param1}, this.updatePagingElements)
+          
+         
+         
+    }
+
+    handleNumPages=(totalNumPages)=>{
+        this.setState({numPages:totalNumPages})
+    }
+    prevBtnHandler=()=>{
+       
+        this.setState({nextBtnFlag:false})
+        this.setState({currentPage:this.state.currentPage <= 0 ? 0: --this.state.currentPage}, this.updatePagingElements)
+
+    }
+
+    nextBtnHandler=()=>{
+        this.setState({prevBtnFlag:false})
+        this.setState({currentPage:this.state.currentPage >= this.state.numPages ? this.state.numPages: ++this.state.currentPage}, this.updatePagingElements)
+
+    }
+    updatePagingElements = () => {
+        if(this.state.currentPage===this.state.numPages -1){
+            this.setState({prevBtnFlag:false})
+            this.setState({nextBtnFlag:true})
+
+          }
+          if(this.state.currentPage===0){
+            this.setState({prevBtnFlag:true})
+            this.setState({nextBtnFlag:false})
+
+          }
+
+      }
+    
+    componentDidUpdate(){
+        // console.log(this.state.prevCurrentPageSate)
+        // console.log(this.state.currentPage)
+       
+    }
+     
+
 
     render() {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
-            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter }}>
+            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter, handleCurrentPage:this.handleCurrentPage,
+            handleNumPages:this.handleNumPages, prevBtnHandler:this.prevBtnHandler, nextBtnHandler:this.nextBtnHandler}}>
                 
                 {this.props.children} 
             </AppContextC.Provider>

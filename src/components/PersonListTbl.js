@@ -70,6 +70,9 @@ sortPersonList=(fieldName)=>{
 
 componentDidMount(){
   console.log(this.props.personlist.state.person)
+  let numPages=(Math.ceil(parseFloat(this.props.personlist.state.person.length)/parseFloat(this.props.personlist.state.itemsPerPage)))
+  this.props.personlist.handleNumPages(numPages)
+  console.log(numPages)
    document.getElementById("searchfname").addEventListener("keyup", this.props.personlist.handelFilter)
    document.getElementById("searchlname").addEventListener("keyup", this.props.personlist.handelFilter)
    document.getElementById("searchage").addEventListener("keyup", this.props.personlist.handelFilter)
@@ -92,14 +95,15 @@ componentWillUnmount(){
 
 
 render(){
+  const personState=this.props.personlist.state
 let personListResult=[]
 if(this.props.personlist.state.filterToggle===true)
-personListResult=this.props.personlist.state.person
+personListResult=this.props.personlist.state.person.slice(personState.currentPage * 3, personState.currentPage * 3 + personState.itemsPerPage)
 else
-personListResult=this.props.personlist.state.filteredPersonList
+personListResult=this.props.personlist.state.filteredPersonList.slice(personState.currentPage * 3, personState.currentPage * 3 + personState.itemsPerPage)
 
     return (
-        <div>
+        <div class="container">
           {console.log(this.props.personlist.state.person)}
           <table class="table table-dark table-striped">
     <thead>
