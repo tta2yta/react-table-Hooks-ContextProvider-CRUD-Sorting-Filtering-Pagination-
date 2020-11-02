@@ -123,7 +123,7 @@ class AppContextProvideC extends Component {
           console.log(this.state.person)
           //this.setState({person:this.state.person.slice(3, this.state.currentPage + this.state.itemsPerPage)})
           this.setState({prevCurrentPageSate:this.state.prevCurrentPageSate})
-          this.setState({currentPage:param1}, this.calcSliderValue)
+          this.setState({currentPage:param1}, this.updatePagingElements)
           
          
          
@@ -147,7 +147,7 @@ class AppContextProvideC extends Component {
         this.setState({currentPage:this.state.currentPage >= this.state.numPages ? this.state.numPages: ++this.state.currentPage})
 
     }
-    calcSliderValue = () => {
+    updatePagingElements = () => {
         if(this.state.currentPage===this.state.numPages -1){
             this.setState({prevBtnFlag:false})
             this.setState({nextBtnFlag:true})
