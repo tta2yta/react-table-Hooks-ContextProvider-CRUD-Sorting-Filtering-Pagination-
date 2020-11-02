@@ -118,6 +118,10 @@ class AppContextProvideC extends Component {
           this.setState({prevCurrentPageSate:this.state.prevCurrentPageSate})
           this.setState({currentPage:param1})
     }
+
+    handelNumPages=(totalNumPages)=>{
+        this.setState({numPages:totalNumPages})
+    }
     componentDidUpdate(){
         // console.log(this.state.prevCurrentPageSate)
         // console.log(this.state.currentPage)
@@ -130,7 +134,8 @@ class AppContextProvideC extends Component {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
-            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter, handleCurrentPage:this.handleCurrentPage}}>
+            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter, handleCurrentPage:this.handleCurrentPage,
+            handelNumPages:this.handelNumPages}}>
                 
                 {this.props.children} 
             </AppContextC.Provider>

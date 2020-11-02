@@ -70,6 +70,7 @@ sortPersonList=(fieldName)=>{
 
 componentDidMount(){
   console.log(this.props.personlist.state.person)
+  let val=(Math.ceil(parseFloat(personFinal.length)/parseFloat(itemsPerPage)))
    document.getElementById("searchfname").addEventListener("keyup", this.props.personlist.handelFilter)
    document.getElementById("searchlname").addEventListener("keyup", this.props.personlist.handelFilter)
    document.getElementById("searchage").addEventListener("keyup", this.props.personlist.handelFilter)
