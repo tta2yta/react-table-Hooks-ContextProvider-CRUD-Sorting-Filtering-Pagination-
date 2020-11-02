@@ -30,7 +30,7 @@ class AppContextProvideC extends Component {
             currentPage:0,
             prevCurrentPageSate:0,
             prevBtnFlag:true,
-            nextBtnFlag:true
+            nextBtnFlag:false
          };
     }
 
@@ -123,17 +123,9 @@ class AppContextProvideC extends Component {
           console.log(this.state.person)
           //this.setState({person:this.state.person.slice(3, this.state.currentPage + this.state.itemsPerPage)})
           this.setState({prevCurrentPageSate:this.state.prevCurrentPageSate})
-          this.setState({currentPage:param1})
-          if(this.state.currentPage===this.state.numPages -1){
-            this.setState({prevBtnFlag:true})
-            this.setState({nextBtnFlag:false})
-
-          }
-          if(this.state.currentPage===0){
-            this.setState({prevBtnFlag:false})
-            this.setState({nextBtnFlag:true})
-
-          }
+          this.setState({currentPage:param1}, this.calcSliderValue)
+          
+         
          
     }
 
@@ -155,11 +147,24 @@ class AppContextProvideC extends Component {
         this.setState({currentPage:this.state.currentPage >= this.state.numPages ? this.state.numPages: ++this.state.currentPage})
 
     }
+    calcSliderValue = () => {
+        if(this.state.currentPage===this.state.numPages -1){
+            this.setState({prevBtnFlag:false})
+            this.setState({nextBtnFlag:true})
+
+          }
+          if(this.state.currentPage===0){
+            this.setState({prevBtnFlag:true})
+            this.setState({nextBtnFlag:false})
+
+          }
+
+      }
     
     componentDidUpdate(){
         // console.log(this.state.prevCurrentPageSate)
         // console.log(this.state.currentPage)
-
+       
     }
      
 
