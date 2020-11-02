@@ -21,7 +21,7 @@ export default class PaginationC extends Component {
             <i class="fa fa-fast-backward"></i>
             </button>
             <button  value="Prev" width="30px" height="10px" onClick={()=>personState.prevBtnHandler()} disabled={personState.state.prevBtnFlag? true:false}  ><i class="fa fa-step-backward" ></i></button>
-            <input type="button" onClick="" />
+            <input type="button" onClick="" value={`Current Page : ${personState.state.currentPage + 1}`} />
             <button  value="Next" onClick={()=>personState.nextBtnHandler()} disabled={personState.state.nextBtnFlag? true:false} >
             <i class="fa fa-step-forward"></i>
             </button>

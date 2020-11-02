@@ -56,7 +56,7 @@ class AppContextProvideC extends Component {
             this.setState({filteredPersonList:[...this.state.filteredPersonList, newPerson]})
             console.log(this.state.person)
             let numPages=(Math.ceil(parseFloat(this.state.person.length)/parseFloat(this.state.itemsPerPage)))
-            this.props.personlist.handeleNumPages(numPages)
+            this.handleNumPages(numPages)
         }
         else{
             //alert(this.state.id)
@@ -79,7 +79,7 @@ class AppContextProvideC extends Component {
         let tempPerson=this.state.person.filter(item=> item !== delItem)
         this.setState({person:tempPerson})
         let numPages=(Math.ceil(parseFloat(this.state.person.length)/parseFloat(this.state.temsPerPage)))
-        this.props.personlist.handeleNumPages(numPages)
+        this.props.personlist.handleNumPages(numPages)
     }
 
 
@@ -129,7 +129,7 @@ class AppContextProvideC extends Component {
          
     }
 
-    handelNumPages=(totalNumPages)=>{
+    handleNumPages=(totalNumPages)=>{
         this.setState({numPages:totalNumPages})
     }
     prevBtnHandler=()=>{
@@ -171,7 +171,7 @@ class AppContextProvideC extends Component {
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
             cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter, handleCurrentPage:this.handleCurrentPage,
-            handelNumPages:this.handelNumPages, prevBtnHandler:this.prevBtnHandler, nextBtnHandler:this.nextBtnHandler}}>
+            handleNumPages:this.handleNumPages, prevBtnHandler:this.prevBtnHandler, nextBtnHandler:this.nextBtnHandler}}>
                 
                 {this.props.children} 
             </AppContextC.Provider>
