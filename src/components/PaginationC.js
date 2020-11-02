@@ -17,10 +17,10 @@ export default class PaginationC extends Component {
         return (
             <div className="pagination">
             <p>
-            <button  value="First" onClick={()=>personState.handleCurrentPage(0)} disabled={personState.state.nextBtnFlag? true:false}  >
+            <button  value="First" onClick={()=>personState.handleCurrentPage(0)} disabled={personState.state.prevBtnFlag? true:false}  >
             <i class="fa fa-fast-backward"></i>
             </button>
-            <button  value="Prev" width="30px" height="10px" onClick={()=>personState.prevBtnHandler()}  ><i class="fa fa-step-backward" ></i></button>
+            <button  value="Prev" width="30px" height="10px" onClick={()=>personState.prevBtnHandler()} disabled={personState.state.prevBtnFlag? true:false}  ><i class="fa fa-step-backward" ></i></button>
             <input type="button" onClick="" />
             <button  value="Next" onClick={()=>personState.nextBtnHandler()} >
             <i class="fa fa-step-forward"></i>

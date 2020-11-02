@@ -119,16 +119,32 @@ class AppContextProvideC extends Component {
       }
 
       handleCurrentPage=(param1)=>{
+          
           console.log(this.state.person)
           //this.setState({person:this.state.person.slice(3, this.state.currentPage + this.state.itemsPerPage)})
           this.setState({prevCurrentPageSate:this.state.prevCurrentPageSate})
           this.setState({currentPage:param1})
+          if(this.state.currentPage===this.state.numPages -1){
+            this.setState({prevBtnFlag:true})
+            this.setState({nextBtnFlag:false})
+
+          }
+          if(this.state.currentPage===0){
+            this.setState({prevBtnFlag:false})
+            this.setState({nextBtnFlag:true})
+
+          }
+         
     }
 
     handelNumPages=(totalNumPages)=>{
         this.setState({numPages:totalNumPages})
     }
     prevBtnHandler=()=>{
+        // if(this.state.currentPage===0){
+        //     this.setState({prevBtnFlag:true})
+        // }
+       
         this.setState({nextBtnFlag:false})
         this.setState({currentPage:this.state.currentPage <= 0 ? 0: --this.state.currentPage})
 
