@@ -13,6 +13,9 @@ export default class PaginationC extends Component {
             <button  value="Next" >
             <i class="fa fa-step-forward"></i>
             </button>
+            <button  value="Last"  >
+            <i class="fa fa-fast-forward"></i>
+            </button>
             </p>
             </div>
         )
