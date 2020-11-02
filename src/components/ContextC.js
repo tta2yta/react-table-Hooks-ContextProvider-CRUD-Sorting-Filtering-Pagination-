@@ -133,18 +133,15 @@ class AppContextProvideC extends Component {
         this.setState({numPages:totalNumPages})
     }
     prevBtnHandler=()=>{
-        // if(this.state.currentPage===0){
-        //     this.setState({prevBtnFlag:true})
-        // }
        
         this.setState({nextBtnFlag:false})
-        this.setState({currentPage:this.state.currentPage <= 0 ? 0: --this.state.currentPage})
+        this.setState({currentPage:this.state.currentPage <= 0 ? 0: --this.state.currentPage}, this.updatePagingElements)
 
     }
 
     nextBtnHandler=()=>{
         this.setState({prevBtnFlag:false})
-        this.setState({currentPage:this.state.currentPage >= this.state.numPages ? this.state.numPages: ++this.state.currentPage})
+        this.setState({currentPage:this.state.currentPage >= this.state.numPages ? this.state.numPages: ++this.state.currentPage}, this.updatePagingElements)
 
     }
     updatePagingElements = () => {
