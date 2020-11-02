@@ -103,7 +103,7 @@ else
 personListResult=this.props.personlist.state.filteredPersonList.slice(personState.currentPage * 3, personState.currentPage * 3 + personState.itemsPerPage)
 
     return (
-        <div>
+        <div class="container">
           {console.log(this.props.personlist.state.person)}
           <table class="table table-dark table-striped">
     <thead>

@@ -46,8 +46,11 @@ class AppContextProvideC extends Component {
     }
 
     addPersonListClass=()=>{
-        
 
+        if(this.state.fname==='' || this.state.lname==='' || this.state.age===''){
+            alert("Please Enter a Value in the Field ")
+            return;
+        }
         if(this.state.saveEditToggle){
             const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
                 lname:this.state.lname, age:this.state.age}
