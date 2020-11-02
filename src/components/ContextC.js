@@ -51,7 +51,7 @@ class AppContextProvideC extends Component {
         if(this.state.saveEditToggle){
             const newPerson={id:this.state.person.lenght, fname:this.state.fname, 
                 lname:this.state.lname, age:this.state.age}
-            this.setState({person: [...this.state.person, newPerson]})
+            this.setState({person: [newPerson, ...this.state.person]})
             if(this.state.filterToggle===false)
             this.setState({filteredPersonList:[...this.state.filteredPersonList, newPerson]})
             console.log(this.state.person)
