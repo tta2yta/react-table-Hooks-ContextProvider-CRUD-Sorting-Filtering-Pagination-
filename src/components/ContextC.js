@@ -28,7 +28,9 @@ class AppContextProvideC extends Component {
             numPages:0,
             itemsPerPage:3,
             currentPage:0,
-            prevCurrentPageSate:0
+            prevCurrentPageSate:0,
+            prevBtnFlag:true,
+            nextBtnFlag:true
          };
     }
 
@@ -127,11 +129,13 @@ class AppContextProvideC extends Component {
         this.setState({numPages:totalNumPages})
     }
     prevBtnHandler=()=>{
+        this.setState({nextBtnFlag:false})
         this.setState({currentPage:this.state.currentPage <= 0 ? 0: --this.state.currentPage})
 
     }
 
     nextBtnHandler=()=>{
+        this.setState({prevBtnFlag:false})
         this.setState({currentPage:this.state.currentPage >= this.state.numPages ? this.state.numPages: ++this.state.currentPage})
 
     }
