@@ -8,11 +8,16 @@ export default class PaginationC extends Component {
             currentPage:0
         }
     }
+
+    componentDidUpdate(){
+
+    }
     render() {
+        const personState=this.props.personlist;
         return (
             <div className="pagination">
             <p>
-            <button  value="First" onClick={()=>this.setState({currentPage:0})}  >
+            <button  value="First" onClick={()=>personState.handleCurrentPage(0)}  >
             <i class="fa fa-fast-backward"></i>
             </button>
             <button  value="Prev" width="30px" height="10px" ><i class="fa fa-step-backward"></i></button>
@@ -20,7 +25,7 @@ export default class PaginationC extends Component {
             <button  value="Next" >
             <i class="fa fa-step-forward"></i>
             </button>
-            <button  value="Last"  >
+            <button  value="Last" onClick={()=>personState.handleCurrentPage(personState.state.numPages -1)} >
             <i class="fa fa-fast-forward"></i>
             </button>
             </p>

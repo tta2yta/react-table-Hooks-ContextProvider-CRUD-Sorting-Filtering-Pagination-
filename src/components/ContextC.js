@@ -27,7 +27,8 @@ class AppContextProvideC extends Component {
             filteredPersonList:[],
             numPages:0,
             itemsPerPage:3,
-            currentPage:0
+            currentPage:0,
+            prevCurrentPageSate:0
          };
     }
 
@@ -111,12 +112,25 @@ class AppContextProvideC extends Component {
         
       }
 
+      handleCurrentPage=(param1)=>{
+          console.log(this.state.person)
+          //this.setState({person:this.state.person.slice(3, this.state.currentPage + this.state.itemsPerPage)})
+          this.setState({prevCurrentPageSate:this.state.prevCurrentPageSate})
+          this.setState({currentPage:param1})
+    }
+    componentDidUpdate(){
+        // console.log(this.state.prevCurrentPageSate)
+        // console.log(this.state.currentPage)
+
+    }
+     
+
 
     render() {
         return (
             <AppContextC.Provider value={{state:this.state, addFun:this.addPersonListClass, handleFirstNameC:this.handleFirstNameC,
             handleLastNameC:this.handleLastNameC, handleAgeC:this.handleAgeC, editPersonListClass:this.editPersonListClass,
-            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter}}>
+            cancelUpdate:this.cancelUpdate, deletePerson:this.deletePerson, handelFilter:this.handelFilter, handleCurrentPage:this.handleCurrentPage}}>
                 
                 {this.props.children} 
             </AppContextC.Provider>

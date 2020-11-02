@@ -35,7 +35,7 @@ export default class PersonListsC extends Component {
             <div className="kkkk">
                 {console.log(this.context)}
                 <PersonListTbl personlist={this.context} />
-                <PaginationC />
+                <PaginationC personlist={this.context} />
         {/* {this.state.person.map((item, key)=> <li>{item.fname}</li>)} */}
               {/* <AppContextProvideC>
                   <AppContextC.Consumer>
