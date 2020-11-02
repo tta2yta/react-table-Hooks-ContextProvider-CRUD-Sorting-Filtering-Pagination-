@@ -70,7 +70,9 @@ sortPersonList=(fieldName)=>{
 
 componentDidMount(){
   console.log(this.props.personlist.state.person)
-  let val=(Math.ceil(parseFloat(personFinal.length)/parseFloat(itemsPerPage)))
+  let numPages=(Math.ceil(parseFloat(this.props.personlist.state.person.length)/parseFloat(this.props.personlist.state.itemsPerPage)))
+  this.props.personlist.handelNumPages(numPages)
+  console.log(numPages)
    document.getElementById("searchfname").addEventListener("keyup", this.props.personlist.handelFilter)
    document.getElementById("searchlname").addEventListener("keyup", this.props.personlist.handelFilter)
    document.getElementById("searchage").addEventListener("keyup", this.props.personlist.handelFilter)
@@ -96,9 +98,9 @@ render(){
   const personState=this.props.personlist.state
 let personListResult=[]
 if(this.props.personlist.state.filterToggle===true)
-personListResult=this.props.personlist.state.person.slice(personState.currentPage, personState.currentPage + personState.itemsPerPage)
+personListResult=this.props.personlist.state.person.slice(personState.currentPage * 3, personState.currentPage * 3 + personState.itemsPerPage)
 else
-personListResult=this.props.personlist.state.filteredPersonList.slice(personState.currentPage, personState.currentPage + personState.itemsPerPage)
+personListResult=this.props.personlist.state.filteredPersonList.slice(personState.currentPage * 3, personState.currentPage * 3 + personState.itemsPerPage)
 
     return (
         <div>

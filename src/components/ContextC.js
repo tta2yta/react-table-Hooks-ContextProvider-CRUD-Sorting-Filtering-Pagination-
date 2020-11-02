@@ -9,7 +9,7 @@ const initialPerson=[
     {id:1, fname:'aaa', lname:'BBB', age:30},
     {id:2, fname:'CCC', lname:'DDD', age:30},
     {id:3, fname:'EEE', lname:'Tesfay', age:30},
-    {id:3, fname:'bbaac', lname:'ff', age:20}                 
+    {id:4, fname:'bbaac', lname:'ff', age:20}                 
 ]
 
 
@@ -53,6 +53,8 @@ class AppContextProvideC extends Component {
             if(this.state.filterToggle===false)
             this.setState({filteredPersonList:[...this.state.filteredPersonList, newPerson]})
             console.log(this.state.person)
+            let numPages=(Math.ceil(parseFloat(this.state.person.length)/parseFloat(this.state.itemsPerPage)))
+            this.props.personlist.handeleNumPages(numPages)
         }
         else{
             //alert(this.state.id)
@@ -74,6 +76,8 @@ class AppContextProvideC extends Component {
     deletePerson=(delItem)=>{
         let tempPerson=this.state.person.filter(item=> item !== delItem)
         this.setState({person:tempPerson})
+        let numPages=(Math.ceil(parseFloat(this.state.person.length)/parseFloat(this.state.temsPerPage)))
+        this.props.personlist.handeleNumPages(numPages)
     }
 
 
